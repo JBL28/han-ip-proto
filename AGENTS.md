@@ -63,6 +63,14 @@ Keep runtime marker contracts stable and non-destructive when overlays are appli
 - Keep diffs small, reviewable, and reversible.
 - Verify with lint, typecheck, tests, and static analysis after changes; final reports include changed files, simplifications, and remaining risks.
 
+## User-mandated prototype fidelity rules
+- Wireframes are binding source material. For every implemented screen, read the relevant wireframe first and follow its visible text one by one.
+- Do not add text, UI content, sections, explanations, labels, or flows that are not present in the user request, design document, or relevant wireframe.
+- Do not omit any text, UI content, sections, explanations, labels, or flows that are present in the relevant wireframe or explicit user request.
+- If a screen needs image assets to match the wireframe or presentation-grade design, generate and use the required images instead of substituting unrelated placeholders.
+- This prototype is for presentation materials. Prioritize design completeness, visual polish, and faithful screen composition over implementation convenience.
+- Never independently decide to perform work outside the user's requested scope. If a possible improvement is not requested and is not required to satisfy the wireframe/design document, do not do it.
+
 <lore_commit_protocol>
 ## Lore Commit Protocol
 

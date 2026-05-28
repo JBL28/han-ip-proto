@@ -56,3 +56,9 @@ status_line = ["model-with-reasoning", "git-branch", "context-remaining", "total
 
 # ============================================================
 # End oh-my-codex
+
+# OMX-synced Codex project trust state (from runtime CODEX_HOME)
+[projects."/workspaces/basic-nodejs/han-ip"]
+trust_level = "trusted"
+
+# End OMX-synced Codex project trust state

@@ -13,16 +13,41 @@ function LandingPage() {
   return (
     <main className="app-shell page-enter app-shell--index" data-theme="a">
       <section className="page-section hero-card">
-        <p className="eyebrow">A/B/C 디자인 프로토타입</p>
+        <p className="eyebrow">디자인 프로토타입</p>
         <h1>한입 전체 페이지</h1>
-        <p className="body-muted">각 디자인 버전은 같은 콘텐츠를 다른 시각 언어로 보여줍니다.</p>
+        <p className="body-muted">같은 콘텐츠를 다른 시각 언어로 확인합니다.</p>
         <div className="link-grid">
-          <Link className="button button--primary" to="/a/signup/cert">A안 보기</Link>
-          <Link className="button button--secondary" to="/b/signup/cert">B안 보기</Link>
-          <Link className="button button--secondary" to="/c/signup/cert">C안 보기</Link>
+          <Link className="button button--primary" to="/a/signup/cert">시작하기</Link>
+          <Link className="button button--secondary" to="/b/signup/cert">다른 스타일로 시작</Link>
+          <Link className="button button--secondary" to="/c/signup/cert">또 다른 스타일로 시작</Link>
         </div>
       </section>
     </main>
+  );
+}
+
+function HomePage() {
+  return (
+    <section className="home-after-signup">
+      <p className="signup-step-label">홈으로 이동</p>
+      <h1>개인 맞춤 홈 화면으로!</h1>
+      <article className="home-benefit-card">
+        <span>놓치고 있는 공제 혜택</span>
+        <strong>128만원</strong>
+      </article>
+      <article className="home-mission-card">
+        <span>이번 달 절세 미션</span>
+        <strong>3/5 완료</strong>
+      </article>
+      <article className="home-list-card">
+        <span>추천 정책</span>
+        <strong>맞춤 정책 12개 발견</strong>
+      </article>
+      <article className="home-list-card">
+        <span>정책 캘린더</span>
+        <strong>이번 달 신청 가능한 정책 3개</strong>
+      </article>
+    </section>
   );
 }
 
@@ -35,13 +60,18 @@ function ShellPlaceholder({ title }) {
   return <AppShell variant={variant} page="home"><PlaceholderPage title={title} /></AppShell>;
 }
 
+function ShellHome() {
+  const { variant = 'a' } = useParams();
+  return <AppShell variant={variant} page="home"><HomePage /></AppShell>;
+}
+
 export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path=":variant/signup" element={<NavigateToFirstSignupStep />} />
       <Route path=":variant/signup/:stepId" element={<VariantGuard><SignupFlow /></VariantGuard>} />
-      <Route path=":variant/home" element={<VariantGuard><ShellPlaceholder title="메인 페이지" /></VariantGuard>} />
+      <Route path=":variant/home" element={<VariantGuard><ShellHome /></VariantGuard>} />
       <Route path=":variant/tax-saving" element={<VariantGuard><ShellPlaceholder title="절세 추천" /></VariantGuard>} />
       <Route path=":variant/tax-chat" element={<VariantGuard><ShellPlaceholder title="절세챗봇" /></VariantGuard>} />
       <Route path=":variant/deduction-detail" element={<VariantGuard><ShellPlaceholder title="공제 상세보기" /></VariantGuard>} />

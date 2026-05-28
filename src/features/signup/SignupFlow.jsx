@@ -1,17 +1,36 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppShell } from '../../components/AppShell.jsx';
+import signupBackground from '../../assets/signup-flow-background.png';
+import analysisLogoMagnifier from '../../assets/signup/analysis-logo-magnifier.png';
+import verificationShield from '../../assets/signup/verification-shield.png';
 import { getStep, getStepIndex, signupSteps, stepPath } from '../../routes/routeConfig.js';
-import { ChoiceCard, ChevronLeftIcon, Chip, CounterCard, MinusIcon, PlusIcon, YesNoRow } from './SignupControls.jsx';
-import { formatManwon, housingTypes, incomeTypes, initialSignupState } from './signupData.js';
+import { CheckIcon, ChevronLeftIcon, Chip } from './SignupControls.jsx';
+import { formatWon, housingTypes, incomeTypes, initialSignupState, smeOptions } from './signupData.js';
 
 const storageKey = 'hanip.react.signup';
+const inputStepIds = ['cert', 'family', 'income', 'residence'];
+
+function normalizeSignupState(value) {
+  const incoming = value && typeof value === 'object' ? value : {};
+  const merged = { ...initialSignupState, ...incoming };
+  const oldIncomeManwon = incoming.incomeManwon ? String(Number(String(incoming.incomeManwon).replace(/[^0-9]/g, '')) * 10000) : undefined;
+
+  return {
+    ...merged,
+    children: Array.isArray(merged.children) ? merged.children : initialSignupState.children,
+    hasChildren: typeof merged.hasChildren === 'boolean' ? merged.hasChildren : initialSignupState.hasChildren,
+    spouse: typeof merged.spouse === 'boolean' ? merged.spouse : Number(merged.spouse) > 0,
+    parentsSupport: typeof merged.parentsSupport === 'boolean' ? merged.parentsSupport : Number(incoming.parents) > 0 || initialSignupState.parentsSupport,
+    annualIncomeWon: String(merged.annualIncomeWon ?? oldIncomeManwon ?? initialSignupState.annualIncomeWon),
+  };
+}
 
 function readInitialState() {
   try {
-    return { ...initialSignupState, ...JSON.parse(sessionStorage.getItem(storageKey) || '{}') };
+    return normalizeSignupState(JSON.parse(sessionStorage.getItem(storageKey) || '{}'));
   } catch {
-    return initialSignupState;
+    return normalizeSignupState(initialSignupState);
   }
 }
 
@@ -23,134 +42,283 @@ export function SignupFlow() {
   const [form, setForm] = useState(readInitialState);
 
   const safeStep = signupSteps.some((item) => item.id === stepId);
-  const progress = Math.round(((stepIndex + 1) / signupSteps.length) * 100);
   const previous = signupSteps[Math.max(0, stepIndex - 1)].id;
   const next = signupSteps[Math.min(signupSteps.length - 1, stepIndex + 1)].id;
   const isFirst = stepIndex === 0;
-  const isLast = stepIndex === signupSteps.length - 1;
+  const isAnalysis = step.id === 'analysis';
+  const isComplete = step.id === 'complete';
+  const progressIndex = inputStepIds.indexOf(step.id);
+  const inputProgress = progressIndex >= 0 ? Math.round(((progressIndex + 1) / inputStepIds.length) * 100) : 100;
 
   useEffect(() => {
     sessionStorage.setItem(storageKey, JSON.stringify(form));
   }, [form]);
 
   useEffect(() => {
-    document.body.dataset.theme = variant;
-  }, [variant]);
+    if (step.id !== 'analysis') return undefined;
+    const timer = window.setTimeout(() => navigate(stepPath(variant, 'complete')), 1700);
+    return () => window.clearTimeout(timer);
+  }, [navigate, step.id, variant]);
 
   const update = (patch) => setForm((current) => ({ ...current, ...patch }));
-  const clampCount = (value) => Math.max(0, Math.min(9, value));
-  const setCount = (key, delta) => setForm((current) => ({ ...current, household: 'family', [key]: clampCount(Number(current[key]) + delta) }));
-
-  const actions = useMemo(() => ({
-    setHousehold(value) {
-      if (value === 'single') update({ household: 'single', parents: 0, spouse: 0, children: 0 });
-      else update({ household: 'family' });
-    },
-    setCount,
-    setChildAge(delta) {
-      setForm((current) => ({ ...current, childAge: Math.max(0, Math.min(30, current.childAge + delta)) }));
-    },
-    update,
-  }), []);
 
   if (!safeStep) return <Navigate to={stepPath(variant, 'cert')} replace />;
 
   function goNext(event) {
-    if (!isLast) {
-      event.preventDefault();
-      navigate(stepPath(variant, next));
+    event.preventDefault();
+    if (step.id === 'complete') {
+      navigate(`/${variant}/home`);
       return;
     }
+    navigate(stepPath(variant, next));
   }
 
   return (
     <AppShell variant={variant} page="signup" signup>
-      <section className="signup-page">
-        <header className="signup-progress" aria-label="회원가입 진행률">
-          <Link className="signup-back-link" to={stepPath(variant, previous)} aria-disabled={isFirst ? 'true' : undefined}><ChevronLeftIcon /></Link>
-          <div className="signup-progress-copy"><strong>{stepIndex + 1} / {signupSteps.length}</strong><p>{step.label}</p></div>
-          <div className="signup-progress-track" aria-hidden="true"><span style={{ width: `${progress}%` }} /></div>
-        </header>
+      <section className={`signup-page signup-page--${step.id}`}>
+        <img className="signup-bg-image" src={signupBackground} alt="" aria-hidden="true" />
+        {!isAnalysis && !isComplete && (
+          <header className="signup-topbar" aria-label="회원가입 진행률">
+            <Link className="signup-back-link" to={stepPath(variant, previous)} aria-disabled={isFirst ? 'true' : undefined}><ChevronLeftIcon /></Link>
+            <strong>회원가입</strong>
+            <span aria-hidden="true" />
+            <div className="signup-progress-track" aria-hidden="true"><span style={{ width: `${inputProgress}%` }} /></div>
+          </header>
+        )}
 
         <section className="signup-question" aria-labelledby="signup-question-title">
+          <p className="signup-step-label">{step.label}</p>
           <h1 id="signup-question-title">{step.title}</h1>
-          <p className="question-description">{step.description}</p>
-          <StepBody stepId={step.id} form={form} actions={actions} />
+          {step.progressLabel && <p className="signup-step-count">{step.progressLabel}</p>}
+          <div className="signup-lead">
+            <strong>{renderLines(step.lead)}</strong>
+            <span>{step.subLead}</span>
+          </div>
+          <StepBody stepId={step.id} form={form} update={update} />
         </section>
 
-        <footer className="signup-bottom-actions">
-          <Link className="secondary-action" to={stepPath(variant, previous)} aria-disabled={isFirst ? 'true' : undefined}>이전</Link>
-          <Link className="primary-action" to={isLast ? `/${variant}/home` : stepPath(variant, next)} onClick={goNext}>{step.cta}</Link>
-        </footer>
+        {!isAnalysis && (
+          <footer className={`signup-bottom-actions${isComplete ? ' signup-bottom-actions--single' : ''}`}>
+            {!isComplete && <Link className="secondary-action" to={stepPath(variant, previous)} aria-disabled={isFirst ? 'true' : undefined}>이전</Link>}
+            <Link className="primary-action" to={isComplete ? `/${variant}/home` : stepPath(variant, next)} onClick={goNext}>{step.cta}</Link>
+          </footer>
+        )}
       </section>
     </AppShell>
   );
 }
 
-function StepBody({ stepId, form, actions }) {
-  if (stepId === 'cert') return <CertStep form={form} update={actions.update} />;
-  if (stepId === 'family') return <FamilyStep form={form} actions={actions} />;
-  if (stepId === 'income') return <IncomeStep form={form} update={actions.update} />;
-  if (stepId === 'residence') return <ResidenceStep form={form} update={actions.update} />;
-  if (stepId === 'benefits') return <BenefitsStep form={form} update={actions.update} />;
-  return <ReviewStep form={form} />;
+function renderLines(value) {
+  return String(value || '').split('\n').map((line, index) => <span key={line}>{line}{index < String(value || '').split('\n').length - 1 && <br />}</span>);
+}
+
+function StepBody({ stepId, form, update }) {
+  if (stepId === 'cert') return <CertStep form={form} update={update} />;
+  if (stepId === 'family') return <FamilyStep form={form} update={update} />;
+  if (stepId === 'income') return <IncomeStep form={form} update={update} />;
+  if (stepId === 'residence') return <ResidenceStep form={form} update={update} />;
+  if (stepId === 'analysis') return <AnalysisStep />;
+  return <CompleteStep />;
 }
 
 function CertStep({ form, update }) {
-  return <div className="signup-stack">
-    <ChoiceCard title="카카오톡 본인 인증" description="가장 빠른 인증 방식으로 표시" selected={form.authMethod === 'kakao'} onClick={() => update({ authMethod: 'kakao' })} />
-    <ChoiceCard title="통신사 본인 인증" description="휴대폰 번호로 인증하는 흐름" selected={form.authMethod === 'carrier'} onClick={() => update({ authMethod: 'carrier' })} />
-    <article className="info-panel"><strong>인증 후 연결되는 정보</strong><ul><li>마이데이터 연결 안내</li><li>홈택스·정부24·주거래은행 정보</li><li>소득·지출·가족관계 자동 입력 가정</li></ul></article>
-  </div>;
+  return (
+    <div className="signup-stack">
+      <div className="cert-shield-card" aria-hidden="true"><img src={verificationShield} alt="" /></div>
+      <article className="connection-card">
+        <strong>국세청 마이데이터로 자동 연결돼요</strong>
+        <ul>
+          <li>소득 및 세금 정보</li>
+          <li>가족관계 정보</li>
+          <li>건강보험료 정보</li>
+          <li>월세 등 주거정보</li>
+        </ul>
+      </article>
+      <div className="auth-choice-row" role="group" aria-label="간편 인증 방식">
+        <button className={`auth-choice${form.authMethod === 'kakao' ? ' is-selected' : ''}`} type="button" onClick={() => update({ authMethod: 'kakao' })}>카카오 인증</button>
+        <button className={`auth-choice${form.authMethod === 'pass' ? ' is-selected' : ''}`} type="button" onClick={() => update({ authMethod: 'pass' })}>PASS 인증</button>
+      </div>
+      <p className="signup-footnote">나중에 직접 입력할 수도 있어요</p>
+    </div>
+  );
 }
 
-function FamilyStep({ form, actions }) {
-  return <div className="signup-stack">
-    <div className="choice-grid">
-      <ChoiceCard title="1인가구" description="부모님·배우자·자녀가 0명이어도 완료 가능" selected={form.household === 'single'} onClick={() => actions.setHousehold('single')} />
-      <ChoiceCard title="가족 구성 입력" description="부모님, 배우자, 자녀 인원을 조정" selected={form.household === 'family'} onClick={() => actions.setHousehold('family')} />
+function FamilyStep({ form, update }) {
+  const children = Array.isArray(form.children) ? form.children : initialSignupState.children;
+  const updateChild = (childId, patch) => update({
+    children: children.map((child) => (child.id === childId ? { ...child, ...patch } : child)),
+  });
+  const addChild = () => update({
+    hasChildren: true,
+    children: [...children, { id: children.length + 1, birth: '', age: '만 0세' }],
+  });
+
+  return (
+    <div className="signup-stack">
+      <section className="form-section">
+        <h2>가족 구성</h2>
+        <div className="two-card-grid">
+          <ToggleCard label="1인 가구" selected={form.household === 'single'} onClick={() => update({ household: 'single', spouse: false, parentsSupport: false })} />
+          <ToggleCard label="배우자 있음" selected={form.spouse} onClick={() => update({ household: 'family', spouse: !form.spouse })} />
+          <ToggleCard label="부모님 부양" selected={form.parentsSupport} onClick={() => update({ household: 'family', parentsSupport: !form.parentsSupport })} />
+          <ToggleCard label="해당 없음" selected={form.household === 'single' && !form.spouse && !form.parentsSupport} onClick={() => update({ household: 'single', spouse: false, parentsSupport: false })} />
+        </div>
+      </section>
+
+      <section className="form-section">
+        <h2>자녀 정보</h2>
+        <div className="yes-no-row yes-no-row--compact">
+          <span>자녀가 있나요?</span>
+          <span className="yes-no-controls" role="group" aria-label="자녀가 있나요?">
+            <button className={`mini-pill${form.hasChildren ? ' is-selected' : ''}`} type="button" onClick={() => update({ hasChildren: true })}>있음</button>
+            <button className={`mini-pill${!form.hasChildren ? ' is-selected' : ''}`} type="button" onClick={() => update({ hasChildren: false, children: [] })}>없음</button>
+          </span>
+        </div>
+        {form.hasChildren && children.map((child, index) => (
+          <label className="child-row" key={child.id}>
+            <strong>자녀 {index + 1}</strong>
+            <input type="text" value={child.birth} onChange={(event) => updateChild(child.id, { birth: event.target.value })} aria-label={`자녀 ${index + 1} 생년월일`} />
+            <b>({child.age})</b>
+            <span aria-hidden="true">›</span>
+          </label>
+        ))}
+        <button className="add-child-button" type="button" onClick={addChild}>+ 자녀 추가</button>
+      </section>
     </div>
-    <CounterCard label="부모님" helper="배우자/부모 인원 수 수정 요구 반영" value={form.parents} onMinus={() => actions.setCount('parents', -1)} onPlus={() => actions.setCount('parents', 1)} />
-    <CounterCard label="배우자" helper="여부와 생년월일 입력 단계로 이어질 수 있음" value={form.spouse} onMinus={() => actions.setCount('spouse', -1)} onPlus={() => actions.setCount('spouse', 1)} />
-    <CounterCard label="자녀" helper="나이 값은 굵게, 같은 양식으로 표시" value={form.children} age={`만 ${form.childAge}세`} onMinus={() => actions.setCount('children', -1)} onPlus={() => actions.setCount('children', 1)} />
-    {form.children > 0 && <div className="age-control"><span>자녀 나이</span><button type="button" onClick={() => actions.setChildAge(-1)}><MinusIcon /></button><strong>만 {form.childAge}세</strong><button type="button" onClick={() => actions.setChildAge(1)}><PlusIcon /></button></div>}
-    <p className="helper-note">선택 버튼을 따로 두지 않고, 인원 조정 카드가 곧 선택 UI입니다.</p>
-  </div>;
+  );
 }
 
 function IncomeStep({ form, update }) {
-  return <div className="signup-stack">
-    <div className="chip-grid" role="group" aria-label="소득 유형">
-      {incomeTypes.map((type) => <Chip key={type} selected={form.incomeType === type} onClick={() => update({ incomeType: type })}>{type}</Chip>)}
+  return (
+    <div className="signup-stack">
+      <section className="form-section">
+        <h2>직업 유형</h2>
+        <div className="chip-grid" role="group" aria-label="직업 유형">
+          {incomeTypes.map((type) => <Chip key={type} selected={form.incomeType === type} onClick={() => update({ incomeType: type })}>{type}</Chip>)}
+        </div>
+      </section>
+      <label className="field-card">
+        <span>연소득 (세전)</span>
+        <div className="field-input-row">
+          <input inputMode="numeric" pattern="[0-9,]*" value={formatWon(form.annualIncomeWon)} onChange={(event) => update({ annualIncomeWon: event.target.value.replace(/[^0-9]/g, '') })} aria-label="연소득 세전" />
+          <strong>원</strong>
+        </div>
+        <em>예시) 3,200만원</em>
+      </label>
+      <p className="signup-footnote signup-footnote--left">정확하지 않아도 괜찮아요. 대략적으로 입력해주세요.</p>
+      <section className="form-section">
+        <h2>추가 정보 (선택)</h2>
+        <p className="section-question">중소기업 재직 여부</p>
+        <div className="sme-options" role="group" aria-label="중소기업 재직 여부">
+          {smeOptions.map((option) => <button key={option.value} className={`mini-pill mini-pill--wide${form.smeStatus === option.value ? ' is-selected' : ''}`} type="button" onClick={() => update({ smeStatus: option.value })}>{option.label}</button>)}
+        </div>
+      </section>
     </div>
-    <label className="field-card"><span>연소득</span><div className="field-input-row"><input inputMode="numeric" pattern="[0-9,]*" value={formatManwon(form.incomeManwon)} onChange={(event) => update({ incomeManwon: event.target.value.replace(/[^0-9]/g, '') })} aria-label="연소득 만원 단위 입력" /><strong>만 원</strong></div><em>숫자를 입력하면 쉼표가 자동으로 적용됩니다. 예: 2,600만 원</em></label>
-  </div>;
+  );
 }
 
 function ResidenceStep({ form, update }) {
-  return <div className="signup-stack">
-    <label className="field-card"><span>주거 지역</span><input type="text" value={form.region} onChange={(event) => update({ region: event.target.value })} aria-label="주거 지역 입력" /><em>시/군/구 단위로 입력합니다.</em></label>
-    <div className="chip-grid chip-grid--two" role="group" aria-label="주거 형태">{housingTypes.map((item) => <Chip key={item} selected={form.housing === item} onClick={() => update({ housing: item })}>{item}</Chip>)}</div>
-  </div>;
+  return (
+    <div className="signup-stack">
+      <section className="form-section">
+        <h2>거주 지역</h2>
+        <div className="select-row">
+          <label><span className="sr-only">시도</span><input type="text" value={form.sido} onChange={(event) => update({ sido: event.target.value })} /></label>
+          <label><span className="sr-only">시군구</span><input type="text" value={form.sigungu} onChange={(event) => update({ sigungu: event.target.value })} /></label>
+        </div>
+      </section>
+      <section className="form-section">
+        <h2>주거 형태</h2>
+        <div className="housing-grid" role="group" aria-label="주거 형태">
+          {housingTypes.map((item) => <Chip key={item} selected={form.housing === item} onClick={() => update({ housing: item })}>{item}</Chip>)}
+        </div>
+      </section>
+      <section className="form-section">
+        <h2>월세 정보 (선택)</h2>
+        <MoneyField label="보증금" value={form.depositWon} onChange={(value) => update({ depositWon: value })} />
+        <MoneyField label="월세 금액" value={form.monthlyRentWon} onChange={(value) => update({ monthlyRentWon: value })} />
+      </section>
+    </div>
+  );
 }
 
-function BenefitsStep({ form, update }) {
-  return <div className="signup-stack">
-    <YesNoRow label="경력 단절 여부" value={form.careerBreak} onChange={(value) => update({ careerBreak: value })} />
-    <YesNoRow label="장애인 여부(본인 또는 가족)" value={form.disabledFamily} onChange={(value) => update({ disabledFamily: value })} />
-    <YesNoRow label="중소기업 취업 여부" value={form.sme} onChange={(value) => update({ sme: value })} />
-  </div>;
+function MoneyField({ label, value, onChange }) {
+  return (
+    <label className="money-row">
+      <span>{label}</span>
+      <input inputMode="numeric" value={formatWon(value)} onChange={(event) => onChange(event.target.value.replace(/[^0-9]/g, ''))} aria-label={label} />
+      <strong>원</strong>
+    </label>
+  );
 }
 
-function ReviewStep({ form }) {
-  return <div className="signup-stack">
-    <ul className="review-list">
-      <li><strong>인증</strong><span>{form.authMethod === 'kakao' ? '카카오톡 본인 인증' : '통신사 본인 인증'}</span></li>
-      <li><strong>가족</strong><span>{form.household === 'single' ? '1인가구' : '가족 구성'} · 부모님 {form.parents}명 · 배우자 {form.spouse}명 · 자녀 {form.children}명</span></li>
-      <li><strong>소득</strong><span>{form.incomeType} · {formatManwon(form.incomeManwon) || '0'}만 원</span></li>
-      <li><strong>주거</strong><span>{form.region} · {form.housing}</span></li>
-      <li><strong>추가 조건</strong><span>경력단절 {form.careerBreak ? 'O' : 'X'} · 장애인 {form.disabledFamily ? 'O' : 'X'} · 중소기업 {form.sme ? 'O' : 'X'}</span></li>
-    </ul>
-    <p className="helper-note">실제 저장/계산 없이 UI 흐름만 작동하는 프로토타입입니다.</p>
-  </div>;
+function AnalysisStep() {
+  return (
+    <>
+      <img className="analysis-mascot" src={analysisLogoMagnifier} alt="" aria-hidden="true" />
+      <div className="analysis-panel" aria-live="polite">
+        <div className="analysis-orb"><span>75%</span></div>
+      <ul>
+        <li>소득 정보를 확인하는 중</li>
+        <li>절세 공제 항목 분석하는 중</li>
+        <li>맞춤 정책을 찾는 중</li>
+        <li>받을 혜택을 계산하는 중</li>
+      </ul>
+      </div>
+    </>
+  );
+}
+
+function createConfettiPieces() {
+  return Array.from({ length: 34 }, (_, index) => ({
+    id: index,
+    x: Math.round(Math.random() * 96 + 2),
+    delay: -(Math.random() * 4.8).toFixed(2),
+    duration: (4.2 + Math.random() * 2.4).toFixed(2),
+    drift: Math.round((Math.random() - 0.5) * 46),
+    spin: Math.round(220 + Math.random() * 460),
+    scale: (0.72 + Math.random() * 0.55).toFixed(2),
+  }));
+}
+
+
+function CompleteStep() {
+  const confettiPieces = useMemo(createConfettiPieces, []);
+
+  return (
+    <div className="complete-panel">
+      <div className="confetti-field" aria-hidden="true">
+        {confettiPieces.map((piece) => (
+          <i
+            key={piece.id}
+            style={{
+              '--x': piece.x,
+              '--d': `${piece.duration}s`,
+              '--delay': `${piece.delay}s`,
+              '--drift': `${piece.drift}px`,
+              '--spin': `${piece.spin}deg`,
+              '--scale': piece.scale,
+            }}
+          />
+        ))}
+      </div>
+      <article className="benefit-summary-card">
+        <span>예상 절세 혜택</span>
+        <strong>128만원!</strong>
+      </article>
+      <dl className="benefit-list">
+        <div><dt>현재 받고 있는 혜택</dt><dd>42만원</dd></div>
+        <div><dt>놓치고 있는 혜택</dt><dd>86만원</dd></div>
+      </dl>
+    </div>
+  );
+}
+
+function ToggleCard({ label, selected, onClick }) {
+  return (
+    <button className={`toggle-card${selected ? ' is-selected' : ''}`} type="button" aria-pressed={selected} onClick={onClick}>
+      <span>{label}</span>
+      <i aria-hidden="true">{selected ? <CheckIcon /> : '×'}</i>
+    </button>
+  );
 }

@@ -1,12 +1,57 @@
 export const variants = ['a', 'b', 'c'];
 
 export const signupSteps = [
-  { id: 'cert', label: '인증', title: '본인 인증을 먼저 해주세요', description: '통신사 또는 카카오톡 인증 후 마이데이터 연결 안내로 이어집니다.', cta: '인증하고 다음' },
-  { id: 'family', label: '가족', title: '가족 관계를 알려주세요', description: '선택 버튼과 인원 조정을 분리하지 않고, 인원 조정 카드 자체가 선택 역할을 합니다.', cta: '가족 정보 저장' },
-  { id: 'income', label: '소득', title: '소득 정보를 입력해주세요', description: '직업 유형을 고르고 연소득은 만원 단위 숫자로 입력합니다.', cta: '소득 정보 저장' },
-  { id: 'residence', label: '주거', title: '주거 정보를 확인해주세요', description: '지역과 주거 형태를 바탕으로 월세·주거 지원 가능성을 이어서 봅니다.', cta: '주거 정보 저장' },
-  { id: 'benefits', label: '혜택', title: '더 많은 혜택 조건을 체크해요', description: '경력 단절, 장애인 여부, 중소기업 취업 여부를 O/X로만 답합니다.', cta: '조건 체크 완료' },
-  { id: 'review', label: '완료', title: '입력한 내용을 확인해주세요', description: '실제 저장 없이 다음 화면으로 이어지는 앱뷰 프로토타입입니다.', cta: '맞춤 혜택 보러 가기' },
+  {
+    id: 'cert',
+    label: '본인 인증 & 마이데이터 연결',
+    title: '간편 인증으로 시작해요',
+    progressLabel: '1/4 단계',
+    lead: '내게 맞춤 절세 혜택을\n찾을 수 있도록 연결해요',
+    subLead: '3분이면 끝나요!',
+    cta: '마이데이터 연결하기',
+  },
+  {
+    id: 'family',
+    label: '가족 관계 입력',
+    title: '가족 정보를 입력해주세요',
+    progressLabel: '2/4 단계',
+    lead: '가족 구성을 알려주세요',
+    subLead: '공제 혜택 분석에 활용돼요.',
+    cta: '다음',
+  },
+  {
+    id: 'income',
+    label: '소득 정보 입력',
+    title: '소득 정보를 입력해주세요',
+    progressLabel: '3/4 단계',
+    lead: '소득 정보를 알려주세요',
+    subLead: '맞춤 혜택 추천에 활용돼요.',
+    cta: '다음',
+  },
+  {
+    id: 'residence',
+    label: '주거 정보 입력',
+    title: '주거 정보를 입력해주세요',
+    progressLabel: '4/4 단계',
+    lead: '주거 정보를 알려주세요',
+    subLead: '주거 관련 혜택 분석에 활용돼요.',
+    cta: '가입 완료하기',
+  },
+  {
+    id: 'analysis',
+    label: '가입 완료 후 분석 중',
+    title: '입력한 정보를 분석해요',
+    lead: 'AI 분석 중이에요',
+    subLead: '잠시만 기다려주세요!',
+  },
+  {
+    id: 'complete',
+    label: '분석 완료',
+    title: '맞춤 혜택을 확인하세요',
+    lead: '분석이 완료됐어요!',
+    subLead: '받을 수 있는 혜택을 찾았어요',
+    cta: '내 혜택 확인하기',
+  },
 ];
 
 export function isVariant(value) {
