@@ -15,6 +15,7 @@
 - Personality: 단순함, 신뢰감, 차분함, 금융/세금 맥락에 맞는 명료함
 - Trust signals: 여백, 짧은 문장, 선명한 정보 위계, 안정적인 파란 포인트 컬러
 - Avoid: 장식적 그래픽, 과도한 카드/배지, 요구사항에 없는 메뉴/위젯/광고/통계 요소
+- Hard UI ban: 사용자 화면에 `A안`, `B안`, `C안`, `n안`, `절제된 금융 앱`, `정보 카드형 앱`, `AI 비서형 앱` 같은 내부 variant 설명 라벨을 노출하지 않는다. Variant는 라우트/테마 내부 식별자일 뿐 사용자용 콘텐츠가 아니다.
 
 ## Product goals
 - Goals:
@@ -114,6 +115,7 @@
 - Empty: 시나리오 2개가 고정이므로 별도 empty 화면 없음
 - Error: 실제 네트워크 없음. mock API 실패 테스트가 필요할 때만 문서화
 - Success: 선택 완료/상세 전환을 모션으로 표현
+- Required UI behavior: “비즈니스 로직/백엔드 기능 없음”은 실제 인증, 저장, 계산, 서버 통신을 하지 않는다는 뜻이다. 선택, 입력, 카운터, 다음/이전, 라우팅, 진행률, 토글, accordion, chip 상태 같은 프로토타입 UI 상호작용은 반드시 작동해야 한다.
 - Disabled: 요구사항상 비활성 액션이 생길 때만 제공
 - Offline/slow network: 프로토타입 범위 밖
 
@@ -123,7 +125,8 @@
 - Microcopy rules: 질문형 버튼명보다 행동형 문구 사용, 사용자가 해야 할 일을 명확히 표현
 
 ## Implementation constraints
-- Framework/styling system: 아직 미정. 신규 스캐폴드 시 React/Vite 또는 Next.js 중 단순 앱뷰 구현에 맞춰 선택
+- Pre-implementation ritual: 모든 페이지 구현 전 `docs/korean-mobile-app-layout-research.md`의 핵심 원칙과 해당 페이지 요구사항(`설계문서.md`, `wireframes/`, `.omx/plans/abc-page-design-plan.md`)을 먼저 확인하고, 구현 선택이 원칙과 충돌하면 문서/계획을 보정한 뒤 진행한다. 특히 (1) 사용자 화면에 variant 내부 라벨을 노출하지 않는지, (2) mock 범위라도 UI 상호작용이 실제로 작동하는지 먼저 확인한다.
+- Framework/styling system: 현재 구현은 정적 HTML/CSS/ES module 구조(`src/app.js`, `src/renderers/pages.js`, `src/styles/global.css`)를 기준으로 유지한다. 신규 프레임워크 전환은 별도 결정 없이는 하지 않는다.
 - Design-token constraints: CSS variables 또는 theme object로 최소 토큰 유지
 - Variant constraints: A/B/C는 `[data-theme="a"|"b"|"c"]` 단위로 margin, color, font, radius, motion을 공유
 - Performance constraints: 첫 렌더가 가벼워야 하며 이미지/외부 의존 최소화

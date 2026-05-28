@@ -3,21 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>한입 프로토타입</title>
-    <link rel="stylesheet" href="src/styles/global.css" />
+    <title>한입 React 프로토타입</title>
   </head>
   <body data-theme="a">
-    <main class="app-shell app-shell--index">
-      <section class="page-section hero-card">
-        <p class="eyebrow">A/B/C 디자인 프로토타입</p>
-        <h1>한입 전체 페이지</h1>
-        <p class="body-muted">각 디자인 버전은 같은 콘텐츠를 다른 시각 언어로 보여줍니다.</p>
-        <div class="link-grid">
-          <a class="button button--primary" href="/a/home/">A안 보기</a>
-          <a class="button button--secondary" href="/b/home/">B안 보기</a>
-          <a class="button button--secondary" href="/c/home/">C안 보기</a>
-        </div>
-      </section>
-    </main>
+    <main id="root" aria-live="polite"></main>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
