@@ -1,0 +1,123 @@
+{
+  "schema_version": 2,
+  "tools": [
+    {
+      "server_name": "codex_apps",
+      "supports_parallel_tool_calls": false,
+      "server_origin": null,
+      "tool_name": "__fetch",
+      "tool_namespace": "mcp__codex_apps__notion__legacy",
+      "namespace_description": "Search and reference your Notion pages",
+      "tool": {
+        "name": "notion (legacy)_fetch",
+        "title": "fetch",
+        "description": "Retrieves details about Notion entities by their ID. You can fetch the following types of entities: - Page, i.e. from a <page> block or a <mention-page> mention - Database, i.e. from a <database> block or a <mention-database> mention Use the \"fetch\" tool when you need to see the details of one or more Notion entities you already know exists and have their IDs. Provide the Notion entities in the `id` parameter. Content for pages that are returned use the enhanced Markdown format, which is a superset of the standard Markdown syntax. See the full spec in the description of the \"create-pages\" tool. Notion does not currently have a public concept of Data Sources, and only supports Databases. When rendering the response from this tool, assume the database only has one data source and display the details of the data source as the database, removing any mention of \"data sources\" from the result.",
+        "inputSchema": {
+          "properties": {
+            "id": {
+              "description": "Notion page, database, or data source ID to fetch.",
+              "title": "Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id"
+          ],
+          "title": "fetch_input",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "_meta": {
+          "resource_name": "Notion (Legacy)_fetch",
+          "_codex_apps": {
+            "resource_uri": "/connector_37316be7febe4224b3d31465bae4dbd7/link_69c32dd1be28819190f7e9de61342961/fetch",
+            "contains_mcp_source": false
+          },
+          "connector_id": "connector_37316be7febe4224b3d31465bae4dbd7",
+          "connector_name": "Notion (Legacy)",
+          "connector_description": "Search and reference your Notion pages",
+          "link_id": "link_69c32dd1be28819190f7e9de61342961"
+        }
+      },
+      "connector_id": "connector_37316be7febe4224b3d31465bae4dbd7",
+      "connector_name": "Notion (Legacy)",
+      "plugin_display_names": []
+    },
+    {
+      "server_name": "codex_apps",
+      "supports_parallel_tool_calls": false,
+      "server_origin": null,
+      "tool_name": "__search",
+      "tool_namespace": "mcp__codex_apps__notion__legacy",
+      "namespace_description": "Search and reference your Notion pages",
+      "tool": {
+        "name": "notion (legacy)_search",
+        "title": "search",
+        "description": "Perform one or more searches over (query_type): - \"internal\": Perform one or more semantic searches over your entire Notion workspace and connected sources (Slack, Google Drive, Github, Jira, Microsoft Teams, Sharepoint, OneDrive, or Linear). - \"users\": Perform one or more searches over the Notion users in the current workspace. You can use search when you need to find information which is not already available via other tools. Parameters: - query: the query to search for. This cannot be an empty string. - query_type: only \"internal\" or \"users\" is accepted. OPTIONAL - data_source_url: the URL of the database to search in. OPTIONAL When using query, each search query is an AND token match. Meaning, every token in the query is required to be present in order to match. - Search will return documents that contain all of the keywords in the query. - Therefore, queries should be short and keyword-focused (avoid long natural language). - If no results are found, try the following strategies: 1) Use different or related keywords. 2) Make the query more generic and simpler. - To improve recall, consider variants of your terms: abbreviations, synonyms, etc. - Previous search results can provide hints about useful variants of internal terms — use those to refine queries.",
+        "inputSchema": {
+          "properties": {
+            "query": {
+              "description": "Short Notion search query. Use focused keywords rather than a long natural-language question.",
+              "title": "Query",
+              "type": "string"
+            },
+            "query_type": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Optional search mode. Use `internal` for workspace and connected-source search.",
+              "title": "Query Type"
+            },
+            "data_source_url": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "Optional Notion database or data source reference to restrict the search scope.",
+              "title": "Data Source Url"
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "title": "search_input",
+          "type": "object"
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "openWorldHint": false
+        },
+        "_meta": {
+          "resource_name": "Notion (Legacy)_search",
+          "_codex_apps": {
+            "resource_uri": "/connector_37316be7febe4224b3d31465bae4dbd7/link_69c32dd1be28819190f7e9de61342961/search",
+            "contains_mcp_source": false
+          },
+          "connector_id": "connector_37316be7febe4224b3d31465bae4dbd7",
+          "connector_name": "Notion (Legacy)",
+          "connector_description": "Search and reference your Notion pages",
+          "link_id": "link_69c32dd1be28819190f7e9de61342961"
+        }
+      },
+      "connector_id": "connector_37316be7febe4224b3d31465bae4dbd7",
+      "connector_name": "Notion (Legacy)",
+      "plugin_display_names": []
+    }
+  ]
+}

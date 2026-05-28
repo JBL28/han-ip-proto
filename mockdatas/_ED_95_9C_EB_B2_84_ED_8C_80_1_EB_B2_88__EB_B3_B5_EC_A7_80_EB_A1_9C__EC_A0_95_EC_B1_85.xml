@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <wantedList>
+    <totalCount>4</totalCount>
+    <pageNo>1</pageNo>
+    <numOfRows>10</numOfRows>
+    <resultCode>0</resultCode>
+    <resultMessage>SUCCESS</resultMessage>
+    <servList>
+      <inqNum>71868</inqNum>
+      <intrsThemaArray>생활지원,보호·돌봄</intrsThemaArray>
+      <jurMnofNm>보건복지부</jurMnofNm>
+      <jurOrgNm>장애인서비스과</jurOrgNm>
+      <lifeArray>영유아,아동,청소년</lifeArray>
+      <onapPsbltYn>Y</onapPsbltYn>
+      <rprsCtadr>129</rprsCtadr>
+      <servDgst>장애아동 가족의 일상적인 돌봄 부담을 경감하고 보호자의 사회활동을 돕기 위하여 돌봄 및 일시적 휴식지원 서비스를 제공합니다.</servDgst>
+      <servDtlLink>https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003262&amp;wlfareInfoReldBztpCd=01</servDtlLink>
+      <servId>WLF00003262</servId>
+      <servNm>장애아가족양육지원</servNm>
+      <sprtCycNm>년</sprtCycNm>
+      <srvPvsnNm>프로그램/서비스(서비스)</srvPvsnNm>
+      <svcfrstRegTs>20210903</svcfrstRegTs>
+      <trgterIndvdlArray>장애인</trgterIndvdlArray>
+    </servList>
+    <servList>
+      <inqNum>1151727</inqNum>
+      <intrsThemaArray>보육</intrsThemaArray>
+      <jurMnofNm>교육부</jurMnofNm>
+      <jurOrgNm>영유아재정과</jurOrgNm>
+      <lifeArray>영유아,아동</lifeArray>
+      <onapPsbltYn>Y</onapPsbltYn>
+      <rprsCtadr>02-6222-6060</rprsCtadr>
+      <servDgst>가정에서 아이를 돌보는 가정 양육 시, 부모의 자녀 양육에 대한 부담을 줄이고 보육 서비스에 대한 선택권을 보장합니다.</servDgst>
+      <servDtlLink>https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003253&amp;wlfareInfoReldBztpCd=01</servDtlLink>
+      <servId>WLF00003253</servId>
+      <servNm>가정양육수당 지원사업</servNm>
+      <sprtCycNm>월</sprtCycNm>
+      <srvPvsnNm>현금지급</srvPvsnNm>
+      <svcfrstRegTs>20210903</svcfrstRegTs>
+    </servList>
+    <servList>
+      <inqNum>1012894</inqNum>
+      <intrsThemaArray>보육,보호·돌봄</intrsThemaArray>
+      <jurMnofNm>성평등가족부</jurMnofNm>
+      <jurOrgNm>아이돌봄지원과</jurOrgNm>
+      <lifeArray>영유아,아동,청소년</lifeArray>
+      <onapPsbltYn>Y</onapPsbltYn>
+      <rprsCtadr>1577-8136</rprsCtadr>
+      <servDgst>맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.</servDgst>
+      <servDtlLink>https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&amp;wlfareInfoReldBztpCd=01</servDtlLink>
+      <servId>WLF00000024</servId>
+      <servNm>아이돌봄서비스</servNm>
+      <sprtCycNm>수시</sprtCycNm>
+      <srvPvsnNm>기타</srvPvsnNm>
+      <svcfrstRegTs>20210903</svcfrstRegTs>
+      <trgterIndvdlArray>다문화·탈북민,다자녀,장애인,한부모·조손</trgterIndvdlArray>
+    </servList>
+    <servList>
+      <inqNum>1828936</inqNum>
+      <intrsThemaArray>교육</intrsThemaArray>
+      <jurMnofNm>교육부</jurMnofNm>
+      <jurOrgNm>영유아재정과</jurOrgNm>
+      <lifeArray>영유아</lifeArray>
+      <onapPsbltYn>Y</onapPsbltYn>
+      <rprsCtadr>1544-0079</rprsCtadr>
+      <servDgst>국공사립유치원에 재원하는 유아를 대상으로 보호자의 소득수준에 관계없이 전 계층에 유아학비를 지원하여 실질적 교육기회 보장을 지원합니다.</servDgst>
+      <servDtlLink>https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000969&amp;wlfareInfoReldBztpCd=01</servDtlLink>
+      <servId>WLF00000969</servId>
+      <servNm>유아학비 지원(3~5세 누리과정 지원)</servNm>
+      <sprtCycNm>월</sprtCycNm>
+      <srvPvsnNm>전자바우처(바우처)</srvPvsnNm>
+      <svcfrstRegTs>20210903</svcfrstRegTs>
+    </servList>
+  </wantedList>

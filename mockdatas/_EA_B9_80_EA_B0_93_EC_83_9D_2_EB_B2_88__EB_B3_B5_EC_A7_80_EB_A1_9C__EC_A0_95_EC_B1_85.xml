@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+  <wantedList>
+    <totalCount>1</totalCount>
+    <pageNo>1</pageNo>
+    <numOfRows>10</numOfRows>
+    <resultCode>0</resultCode>
+    <resultMessage>SUCCESS</resultMessage>
+    <servList>
+      <inqNum>11896875</inqNum>
+      <intrsThemaArray>주거</intrsThemaArray>
+      <jurMnofNm>국토교통부</jurMnofNm>
+      <jurOrgNm>청년주거정책과</jurOrgNm>
+      <lifeArray>청년</lifeArray>
+      <onapPsbltYn>Y</onapPsbltYn>
+      <rprsCtadr>1599-0001</rprsCtadr>
+      <servDgst>고금리·고물가 등으로 경제적 어려움을 겪는 청년층의 주거비 부담 경감을 위해 월 최대20만원씩 최장 24개월간 월세를 지원합니다(생애1회).
+  ※ '26년 신규 신청기간: 3.30(월) 09:00 ~ 5.29(금) 16:00까지</servDgst>
+      <servDtlLink>https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661&amp;wlfareInfoReldBztpCd=01</servDtlLink>
+      <servId>WLF00004661</servId>
+      <servNm>청년월세 지원사업</servNm>
+      <sprtCycNm>월</sprtCycNm>
+      <srvPvsnNm>현금지급</srvPvsnNm>
+      <svcfrstRegTs>20220413</svcfrstRegTs>
+      <trgterIndvdlArray>저소득</trgterIndvdlArray>
+    </servList>
+  </wantedList>

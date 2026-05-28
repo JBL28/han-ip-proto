@@ -1,0 +1,8 @@
+{
+  "pid": 2689,
+  "parent_pid": 2633,
+  "cwd": "/workspaces/basic-nodejs/han-ip",
+  "started_at": "2026-05-28T12:43:38.160Z",
+  "max_lifetime_ms": 21600000,
+  "owner_token": "2689-1779972218160-63qpg3tb"
+}
