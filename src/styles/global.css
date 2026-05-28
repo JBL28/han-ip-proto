@@ -2100,3 +2100,822 @@ a { color: inherit; text-decoration: none; }
   62% { opacity: .5; }
   100% { transform: translate3d(var(--drift), 52dvh, 0) rotate(var(--spin)) scale(var(--scale)); opacity: 0; }
 }
+
+/* Main page 2 implementation based on wireframes/메인페이지2.png. */
+.main2-page {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 2px 0 28px;
+}
+.main2-alert-card {
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 30px;
+  background: linear-gradient(142deg, #eef5ff 0%, #ffffff 48%, #f7fbff 100%);
+  border: 1px solid #dbeafe;
+  box-shadow: 0 18px 42px rgba(47, 107, 255, .10);
+}
+.main2-alert-card::after {
+  content: "";
+  position: absolute;
+  right: -42px;
+  top: -28px;
+  width: 168px;
+  height: 168px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(47,107,255,.16), rgba(47,107,255,0) 68%);
+}
+.main2-eyebrow {
+  margin: 0 0 10px;
+  color: #3568ef;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.035em;
+}
+.main2-alert-card h1 {
+  margin: 0;
+  color: #101828;
+  font-size: 29px;
+  line-height: 1.16;
+  font-weight: 950;
+  letter-spacing: -0.07em;
+}
+.main2-alert-card > p:not(.main2-eyebrow),
+.main2-knowledge-card p {
+  margin: 12px 0 0;
+  color: #667085;
+  font-size: 14px;
+  line-height: 1.46;
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+.main2-amount-card {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  padding: 18px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid rgba(219, 231, 248, .96);
+  box-shadow: 0 16px 34px rgba(31, 64, 120, .08);
+}
+.main2-amount-card span {
+  color: #667085;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+.main2-amount-card strong {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  margin-top: 5px;
+  color: #2458d8;
+  font-size: 47px;
+  line-height: .96;
+  font-weight: 950;
+  letter-spacing: -0.08em;
+}
+.main2-amount-card em {
+  padding-bottom: 5px;
+  color: #2458d8;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 950;
+}
+.main2-amount-card button,
+.main2-knowledge-card button,
+.main2-section-head button {
+  border: 0;
+  background: transparent;
+  color: #3568ef;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+}
+.main2-amount-card button { margin-top: 14px; padding: 0; }
+.main2-benefit-row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+.main2-benefit-chip {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+  padding: 12px 9px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.76);
+  border: 1px solid #e7edf6;
+}
+.main2-benefit-chip i {
+  width: 26px;
+  height: 26px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #2458d8;
+  background: #edf4ff;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 950;
+}
+.main2-benefit-chip strong {
+  color: #101828;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 950;
+  letter-spacing: -0.05em;
+}
+.main2-benefit-chip span {
+  color: #667085;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: -0.035em;
+}
+.main2-knowledge-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px;
+  gap: 12px;
+  align-items: center;
+  padding: 18px;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid #dbe7f8;
+  box-shadow: 0 16px 36px rgba(31, 64, 120, .07);
+}
+.main2-knowledge-card strong {
+  display: block;
+  color: #101828;
+  font-size: 20px;
+  line-height: 1.25;
+  font-weight: 950;
+  letter-spacing: -0.06em;
+}
+.main2-knowledge-card button { margin-top: 14px; padding: 0; }
+.knowledge-visual {
+  width: 92px;
+  height: 92px;
+  border-radius: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(47, 107, 255, .34);
+  font-size: 36px;
+  font-weight: 950;
+  background: radial-gradient(circle at 34% 28%, #fff 0%, #edf4ff 48%, #dceaff 100%);
+}
+.main2-calendar-section { display: grid; gap: 10px; }
+.main2-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.main2-section-head h2 {
+  margin: 0;
+  color: #101828;
+  font-size: 18px;
+  font-weight: 950;
+  letter-spacing: -0.055em;
+}
+.main2-calendar-card {
+  padding: 15px;
+  border-radius: 28px;
+  background: #fff;
+  border: 1px solid #dbe7f8;
+  box-shadow: 0 16px 36px rgba(31, 64, 120, .07);
+}
+.calendar-caption {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #101828;
+}
+.calendar-caption strong {
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: -0.045em;
+}
+.calendar-caption button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 999px;
+  background: #f6f9ff;
+  color: #667085;
+  font-size: 18px;
+  font-weight: 900;
+}
+.main2-daypicker.rdp-root {
+  --rdp-accent-color: #3568ef;
+  --rdp-accent-background-color: #edf4ff;
+  --rdp-day_button-width: 38px;
+  --rdp-day_button-height: 38px;
+  --rdp-day-width: 42px;
+  --rdp-day-height: 42px;
+  --rdp-day_button-border-radius: 15px;
+  margin: 4px auto 8px;
+  width: 100%;
+}
+.main2-daypicker .rdp-month_caption { display: none; }
+.main2-daypicker .rdp-month_grid { width: 100%; border-collapse: separate; border-spacing: 0 2px; }
+.main2-daypicker .rdp-weekday {
+  color: #667085;
+  font-size: 11px;
+  font-weight: 900;
+}
+.main2-daypicker .rdp-day_button {
+  position: relative;
+  color: #101828;
+  font-size: 13px;
+  font-weight: 850;
+}
+.main2-daypicker .rdp-outside .rdp-day_button { color: #a3aab8; }
+.main2-daypicker .rdp-selected .rdp-day_button {
+  background: #3568ef;
+  color: #fff;
+  border-color: #3568ef;
+}
+.main2-daypicker .rdp-policySchedule .rdp-day_button::after,
+.main2-daypicker .rdp-taxSchedule .rdp-day_button::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: #3568ef;
+}
+.main2-daypicker .rdp-taxSchedule .rdp-day_button::before {
+  transform: translateX(2px);
+  background: #ff9f1c;
+}
+.main2-schedule-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+}
+.main2-schedule-item {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 13px 14px 13px 36px;
+  border-radius: 18px;
+  background: #f8fbff;
+  border: 1px solid #e7edf6;
+}
+.main2-schedule-item::before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #3568ef;
+}
+.main2-schedule-item--tax::before { background: #ff9f1c; }
+.main2-schedule-item strong {
+  color: #101828;
+  font-size: 14px;
+  font-weight: 950;
+  letter-spacing: -0.045em;
+}
+.main2-schedule-item span {
+  color: #667085;
+  font-size: 12px;
+  font-weight: 800;
+}
+.main2-calendar-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  color: #667085;
+  font-size: 12px;
+  font-weight: 850;
+}
+.main2-calendar-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #3568ef;
+}
+.legend-dot--tax { background: #ff9f1c; }
+.bottom-nav-link { font-size: 13px; }
+@media (max-width: 360px) {
+  .main2-alert-card h1 { font-size: 26px; }
+  .main2-amount-card strong { font-size: 40px; }
+  .main2-benefit-row { grid-template-columns: 1fr; }
+  .main2-knowledge-card { grid-template-columns: 1fr; }
+  .knowledge-visual { display: none; }
+}
+
+/* Main page 2 density correction: match compact vertical rhythm from wireframe. */
+.app-content:not(.app-content--signup) {
+  padding-top: 10px;
+}
+.main2-page {
+  gap: 11px;
+  padding: 0 0 16px;
+}
+.main2-alert-card {
+  padding: 15px;
+  border-radius: 24px;
+}
+.main2-eyebrow {
+  margin-bottom: 7px;
+  font-size: 12px;
+}
+.main2-alert-card h1 {
+  font-size: 24px;
+  line-height: 1.13;
+}
+.main2-alert-card > p:not(.main2-eyebrow),
+.main2-knowledge-card p {
+  margin-top: 7px;
+  font-size: 12px;
+  line-height: 1.36;
+}
+.main2-amount-card {
+  margin-top: 11px;
+  padding: 13px 14px;
+  border-radius: 19px;
+}
+.main2-amount-card span {
+  font-size: 11px;
+}
+.main2-amount-card strong {
+  margin-top: 2px;
+  font-size: 34px;
+}
+.main2-amount-card em {
+  padding-bottom: 3px;
+  font-size: 14px;
+}
+.main2-amount-card button {
+  margin-top: 8px;
+  font-size: 11px;
+}
+.main2-benefit-row {
+  gap: 6px;
+  margin-top: 9px;
+}
+.main2-benefit-chip {
+  gap: 3px;
+  padding: 8px 7px;
+  border-radius: 14px;
+}
+.main2-benefit-chip i {
+  width: 21px;
+  height: 21px;
+  border-radius: 8px;
+  font-size: 10px;
+}
+.main2-benefit-chip strong {
+  font-size: 9.8px;
+  line-height: 1.16;
+}
+.main2-benefit-chip span {
+  font-size: 9px;
+}
+.main2-knowledge-card {
+  grid-template-columns: minmax(0, 1fr) 74px;
+  gap: 8px;
+  padding: 13px 14px;
+  border-radius: 22px;
+}
+.main2-knowledge-card strong {
+  font-size: 16px;
+  line-height: 1.2;
+}
+.main2-knowledge-card button,
+.main2-section-head button {
+  margin-top: 8px;
+  font-size: 11px;
+}
+.knowledge-visual {
+  width: 70px;
+  height: 70px;
+  border-radius: 21px;
+  font-size: 27px;
+}
+.main2-calendar-section {
+  gap: 7px;
+}
+.main2-section-head h2 {
+  font-size: 15px;
+}
+.main2-calendar-card {
+  padding: 10px 11px 11px;
+  border-radius: 22px;
+}
+.calendar-caption {
+  height: 27px;
+}
+.calendar-caption strong {
+  font-size: 14px;
+}
+.calendar-caption button {
+  width: 28px;
+  height: 28px;
+  font-size: 14px;
+}
+.main2-daypicker.rdp-root {
+  --rdp-day_button-width: 30px;
+  --rdp-day_button-height: 30px;
+  --rdp-day-width: 34px;
+  --rdp-day-height: 31px;
+  --rdp-day_button-border-radius: 11px;
+  margin: 0 auto 4px;
+}
+.main2-daypicker .rdp-month_grid {
+  border-spacing: 0;
+}
+.main2-daypicker .rdp-weekday {
+  font-size: 10px;
+  padding-bottom: 0;
+}
+.main2-daypicker .rdp-day_button {
+  font-size: 11px;
+}
+.main2-daypicker .rdp-policySchedule .rdp-day_button::after,
+.main2-daypicker .rdp-taxSchedule .rdp-day_button::before {
+  width: 4px;
+  height: 4px;
+  bottom: 2px;
+}
+.main2-schedule-list {
+  gap: 5px;
+  margin-top: 5px;
+}
+.main2-schedule-item {
+  gap: 2px;
+  padding: 9px 11px 9px 28px;
+  border-radius: 14px;
+}
+.main2-schedule-item::before {
+  left: 12px;
+  top: 14px;
+  width: 8px;
+  height: 8px;
+}
+.main2-schedule-item strong {
+  font-size: 12px;
+}
+.main2-schedule-item span {
+  font-size: 10px;
+}
+.main2-calendar-legend {
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 10.5px;
+}
+.legend-dot {
+  width: 7px;
+  height: 7px;
+}
+
+/* Main page 2 compact pass: reduce shell/header/nav vertical footprint and compress cards further. */
+.app-shell--home {
+  padding: var(--safe-top) 14px calc(82px + var(--safe-bottom));
+}
+.app-shell--home .app-header {
+  min-height: 64px;
+  padding-bottom: 4px;
+}
+.app-shell--home .header-logo {
+  width: 40px;
+  height: 40px;
+}
+.app-shell--home .header-title {
+  font-size: 22px;
+}
+.app-shell--home .header-notification {
+  width: 44px;
+  height: 44px;
+}
+.app-shell--home .header-lucide {
+  width: 26px;
+  height: 26px;
+}
+.app-shell--home .app-content {
+  padding-top: 6px;
+  padding-bottom: 12px;
+}
+.app-shell--home .bottom-nav-panel {
+  padding: 4px 12px calc(6px + var(--safe-bottom));
+}
+.app-shell--home .bottom-nav-link {
+  min-height: 58px;
+  gap: 2px;
+  font-size: 11px;
+}
+.app-shell--home .bottom-nav-icon {
+  width: 30px;
+  height: 30px;
+}
+.app-shell--home .bottom-nav-icon--logo,
+.app-shell--home .bottom-nav-logo {
+  width: 34px;
+  height: 34px;
+}
+.app-shell--home .nav-lucide {
+  width: 22px;
+  height: 22px;
+}
+.app-shell--home .bottom-nav-divider {
+  margin-top: 2px;
+}
+.app-shell--home .main2-page {
+  gap: 8px;
+}
+.app-shell--home .main2-alert-card {
+  padding: 12px;
+  border-radius: 21px;
+}
+.app-shell--home .main2-eyebrow {
+  margin-bottom: 5px;
+  font-size: 11px;
+}
+.app-shell--home .main2-alert-card h1 {
+  font-size: 21px;
+  line-height: 1.1;
+}
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow),
+.app-shell--home .main2-knowledge-card p {
+  margin-top: 5px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.app-shell--home .main2-amount-card {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 16px;
+}
+.app-shell--home .main2-amount-card strong {
+  font-size: 29px;
+}
+.app-shell--home .main2-amount-card em {
+  font-size: 12px;
+}
+.app-shell--home .main2-amount-card button {
+  margin-top: 5px;
+  font-size: 10.5px;
+}
+.app-shell--home .main2-benefit-row {
+  gap: 5px;
+  margin-top: 7px;
+}
+.app-shell--home .main2-benefit-chip {
+  padding: 6px;
+  border-radius: 12px;
+}
+.app-shell--home .main2-benefit-chip i {
+  width: 18px;
+  height: 18px;
+  border-radius: 7px;
+  font-size: 9px;
+}
+.app-shell--home .main2-benefit-chip strong {
+  font-size: 9px;
+}
+.app-shell--home .main2-benefit-chip span {
+  font-size: 8.5px;
+}
+.app-shell--home .main2-knowledge-card {
+  grid-template-columns: minmax(0, 1fr) 58px;
+  padding: 10px 12px;
+  border-radius: 19px;
+}
+.app-shell--home .main2-knowledge-card strong {
+  font-size: 14px;
+  line-height: 1.16;
+}
+.app-shell--home .knowledge-visual {
+  width: 56px;
+  height: 56px;
+  border-radius: 17px;
+  font-size: 22px;
+}
+.app-shell--home .main2-knowledge-card button,
+.app-shell--home .main2-section-head button {
+  margin-top: 5px;
+  font-size: 10.5px;
+}
+.app-shell--home .main2-section-head h2 {
+  font-size: 14px;
+}
+.app-shell--home .main2-calendar-card {
+  padding: 8px 9px 9px;
+  border-radius: 19px;
+}
+.app-shell--home .calendar-caption {
+  height: 24px;
+}
+.app-shell--home .calendar-caption strong {
+  font-size: 13px;
+}
+.app-shell--home .calendar-caption button {
+  width: 24px;
+  height: 24px;
+}
+.app-shell--home .main2-daypicker.rdp-root {
+  --rdp-day_button-width: 26px;
+  --rdp-day_button-height: 26px;
+  --rdp-day-width: 30px;
+  --rdp-day-height: 27px;
+  --rdp-day_button-border-radius: 9px;
+}
+.app-shell--home .main2-daypicker .rdp-weekday {
+  font-size: 9px;
+}
+.app-shell--home .main2-daypicker .rdp-day_button {
+  font-size: 10px;
+}
+.app-shell--home .main2-schedule-list {
+  gap: 4px;
+  margin-top: 3px;
+}
+.app-shell--home .main2-schedule-item {
+  padding: 7px 9px 7px 24px;
+  border-radius: 12px;
+}
+.app-shell--home .main2-schedule-item::before {
+  left: 10px;
+  top: 11px;
+  width: 7px;
+  height: 7px;
+}
+.app-shell--home .main2-schedule-item strong {
+  font-size: 11px;
+}
+.app-shell--home .main2-schedule-item span {
+  font-size: 9.5px;
+}
+.app-shell--home .main2-calendar-legend {
+  margin-top: 6px;
+  font-size: 9.5px;
+}
+
+/* Main page 2: keep benefit tag contents and knowledge copy visually horizontal, not stacked. */
+.app-shell--home .main2-benefit-chip {
+  grid-template-columns: 18px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 6px;
+  align-items: center;
+}
+.app-shell--home .main2-benefit-chip i {
+  grid-row: 1 / span 2;
+}
+.app-shell--home .main2-benefit-chip strong,
+.app-shell--home .main2-benefit-chip span {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-shell--home .main2-knowledge-card {
+  grid-template-columns: minmax(0, 1fr) 64px;
+  align-items: center;
+}
+.app-shell--home .main2-knowledge-card > div:first-child {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "tag title"
+    "desc desc"
+    "button button";
+  column-gap: 9px;
+  align-items: start;
+}
+.app-shell--home .main2-knowledge-card .main2-eyebrow {
+  grid-area: tag;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #edf4ff;
+  white-space: nowrap;
+}
+.app-shell--home .main2-knowledge-card strong {
+  grid-area: title;
+}
+.app-shell--home .main2-knowledge-card p {
+  grid-area: desc;
+}
+.app-shell--home .main2-knowledge-card button {
+  grid-area: button;
+  justify-self: start;
+}
+
+/* Main page 2 legibility pass: slightly enlarge only the too-small text. */
+.app-shell--home .main2-benefit-chip strong {
+  font-size: 10.5px;
+}
+.app-shell--home .main2-benefit-chip span {
+  font-size: 9.8px;
+}
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow),
+.app-shell--home .main2-knowledge-card p {
+  font-size: 11.8px;
+}
+.app-shell--home .main2-amount-card button,
+.app-shell--home .main2-knowledge-card button,
+.app-shell--home .main2-section-head button {
+  font-size: 11.2px;
+}
+.app-shell--home .main2-schedule-item strong {
+  font-size: 11.8px;
+}
+.app-shell--home .main2-schedule-item span {
+  font-size: 10.4px;
+}
+.app-shell--home .main2-calendar-legend {
+  font-size: 10.4px;
+}
+.app-shell--home .bottom-nav-link {
+  font-size: 11.8px;
+}
+
+/* Restore today's knowledge card copy flow; keep only benefit chips horizontal. */
+.app-shell--home .main2-knowledge-card > div:first-child {
+  display: block;
+}
+.app-shell--home .main2-knowledge-card .main2-eyebrow {
+  min-height: 0;
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  white-space: normal;
+}
+.app-shell--home .main2-knowledge-card strong,
+.app-shell--home .main2-knowledge-card p,
+.app-shell--home .main2-knowledge-card button {
+  grid-area: auto;
+}
+.app-shell--home .main2-knowledge-card button {
+  justify-self: auto;
+}
+
+/* Main page 2 calendar width correction: make calendar span wider horizontally. */
+.app-shell--home .main2-calendar-card {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.app-shell--home .calendar-caption,
+.app-shell--home .main2-schedule-list,
+.app-shell--home .main2-calendar-legend {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.app-shell--home .main2-daypicker.rdp-root {
+  --rdp-day_button-width: 34px;
+  --rdp-day_button-height: 26px;
+  --rdp-day-width: 40px;
+  --rdp-day-height: 27px;
+  width: 100%;
+  max-width: none;
+}
+.app-shell--home .main2-daypicker .rdp-months,
+.app-shell--home .main2-daypicker .rdp-month,
+.app-shell--home .main2-daypicker .rdp-month_grid {
+  width: 100%;
+}
+
+/* Main page 2: place application CTA on the right side of the amount card. */
+.app-shell--home .main2-amount-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label cta"
+    "amount cta";
+  align-items: center;
+  column-gap: 10px;
+}
+.app-shell--home .main2-amount-card span { grid-area: label; }
+.app-shell--home .main2-amount-card strong { grid-area: amount; }
+.app-shell--home .main2-amount-card button {
+  grid-area: cta;
+  margin-top: 0;
+  max-width: 104px;
+  text-align: right;
+  line-height: 1.28;
+}

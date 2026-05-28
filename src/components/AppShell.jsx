@@ -4,10 +4,10 @@ import logo from '../assets/logo.png';
 
 const tabs = [
   { page: 'home', label: '홈' },
-  { page: 'tax-saving', label: '절세' },
-  { page: 'tax-chat', label: '챗봇', logo: true },
+  { page: 'tax-saving', label: '절세추천' },
+  { page: 'tax-chat', label: '세금챗봇', logo: true },
   { page: 'policies', label: '정책' },
-  { page: 'my', label: '마이' },
+  { page: 'my', label: '마이페이지' },
 ];
 
 const aliases = {
@@ -32,7 +32,7 @@ export function AppShell({ variant, page, children, signup = false }) {
     document.body.dataset.theme = variant;
     const root = document.getElementById('root');
     if (root) {
-      root.className = `app-shell page-enter${signup ? ' app-shell--signup' : ''}`;
+      root.className = `app-shell page-enter${signup ? ' app-shell--signup' : ` app-shell--${page}`}`;
       root.dataset.theme = variant;
     }
   }, [variant, signup]);

@@ -12,11 +12,11 @@
     },
     "omx-1779982634703-iw9glh": {
       "ordinary_no_progress_guard": {
-        "fingerprint": "ordinary|색종이 랜덤화 완료. 변경: - 각 조각마다 렌더 시 랜덤값 생성 - 시작 x 위치 - 생성 지연 시간 - 낙하 속도 - 좌우 흔들림 - 회전량 - 크기 - 한 줄로 동시에 떨어지는 느낌 제거 - 중간까지 천천히 떨어지며 투명도 감소 유지 검증: - `npm run build` 통과.",
-        "first_seen_at": "2026-05-28T17:14:18.582Z",
-        "last_seen_at": "2026-05-28T17:14:18.582Z",
+        "fingerprint": "ordinary|수정 완료. - `바로 확인하고 신청하기 >` 버튼을 공제 혜택 카드 오른쪽으로 이동 - 금액은 왼쪽 유지 - `npm run build` 통과.",
+        "first_seen_at": "2026-05-28T17:28:08.599Z",
+        "last_seen_at": "2026-05-28T17:28:08.599Z",
         "repeat_count": 1,
-        "last_turn_id": "019e6f92-512f-7521-8a2c-3903746b3e3c",
+        "last_turn_id": "019e6fa0-d1d1-7323-90b7-481a2a1f74d9",
         "last_thread_id": null
       }
     }

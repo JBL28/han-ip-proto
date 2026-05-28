@@ -1,6 +1,7 @@
 import { Link, Navigate, Route, Routes, useParams } from 'react-router-dom';
 import { AppShell } from '../components/AppShell.jsx';
 import { SignupFlow } from '../features/signup/SignupFlow.jsx';
+import { HomePage } from '../features/home/HomePage.jsx';
 import { isVariant, signupSteps } from './routeConfig.js';
 
 function VariantGuard({ children }) {
@@ -23,31 +24,6 @@ function LandingPage() {
         </div>
       </section>
     </main>
-  );
-}
-
-function HomePage() {
-  return (
-    <section className="home-after-signup">
-      <p className="signup-step-label">홈으로 이동</p>
-      <h1>개인 맞춤 홈 화면으로!</h1>
-      <article className="home-benefit-card">
-        <span>놓치고 있는 공제 혜택</span>
-        <strong>128만원</strong>
-      </article>
-      <article className="home-mission-card">
-        <span>이번 달 절세 미션</span>
-        <strong>3/5 완료</strong>
-      </article>
-      <article className="home-list-card">
-        <span>추천 정책</span>
-        <strong>맞춤 정책 12개 발견</strong>
-      </article>
-      <article className="home-list-card">
-        <span>정책 캘린더</span>
-        <strong>이번 달 신청 가능한 정책 3개</strong>
-      </article>
-    </section>
   );
 }
 
