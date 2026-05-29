@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import beginnerImage from '../../assets/ai-persona/persona-beginner.svg';
-import interestedImage from '../../assets/ai-persona/persona-interested.svg';
-import studyImage from '../../assets/ai-persona/persona-study.svg';
+import beginnerImage from '../../assets/ai-persona/persona-beginner-character.png';
+import interestedImage from '../../assets/ai-persona/persona-interested-character.png';
+import studyImage from '../../assets/ai-persona/persona-study-character.png';
 import { AppCard } from '../../components/AppCard.jsx';
 import { chatPersonas, readChatPersonaId, saveChatPersonaId } from '../../data/screenData.js';
 import { getRememberedPersonaId, pagePath } from '../../routes/routeConfig.js';

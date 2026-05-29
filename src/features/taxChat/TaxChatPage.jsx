@@ -1,9 +1,17 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import aiAvatar from '../../assets/tax-chat/ai-chat-avatar.svg';
+import beginnerAvatar from '../../assets/ai-persona/persona-beginner-character.png';
+import interestedAvatar from '../../assets/ai-persona/persona-interested-character.png';
+import studyAvatar from '../../assets/ai-persona/persona-study-character.png';
 import { ChatInputBar, ChatMessageBubble, ChatSuggestionChip, ChatSummaryNotice } from '../../components/ChatComponents.jsx';
 import { chatDataByPersona, chatPersonas, commonChatAnswers, commonChatQuestions, readChatPersonaId } from '../../data/screenData.js';
 import { getRememberedPersonaId, pagePath } from '../../routes/routeConfig.js';
+
+const chatAvatarByPersona = {
+  beginner: beginnerAvatar,
+  interested: interestedAvatar,
+  study: studyAvatar,
+};
 
 function answerFor(question, data) {
   return data.answers?.[question] || commonChatAnswers[question] || `${question} 질문은 현재 추천 공제와 연결해서 확인할 수 있어요. 핵심 조건, 필요한 자료, 다음 행동 순서로 정리해드릴게요.`;
@@ -85,7 +93,7 @@ export function TaxChatPage() {
       </header>
       <ChatSummaryNotice summary={data.summary} items={summaryItems} open={summaryOpen} onToggle={() => setSummaryOpen((value) => !value)} />
       <div className="chat-message-list" aria-label="채팅 메시지" ref={messageListRef}>
-        {messages.map((message) => <ChatMessageBubble key={message.id} message={message} avatarSrc={aiAvatar} />)}
+        {messages.map((message) => <ChatMessageBubble key={message.id} message={message} avatarSrc={chatAvatarByPersona[chatPersona.id]} avatarVariant={chatPersona.id} />)}
       </div>
       <div className="chat-bottom-stack">
         <section className={`chat-suggestions${questionsOpen ? ' is-open' : ''}`} aria-label="자주 묻는 질문">

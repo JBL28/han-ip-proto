@@ -18,11 +18,15 @@ export function ChatSummaryNotice({ summary, items, open, onToggle }) {
   );
 }
 
-export function ChatMessageBubble({ message, avatarSrc }) {
+export function ChatMessageBubble({ message, avatarSrc, avatarVariant }) {
   const isUser = message.role === 'user';
   return (
     <div className={`chat-message chat-message--${message.role}`}>
-      {!isUser && <img className="chat-avatar" src={avatarSrc} alt="" aria-hidden="true" />}
+      {!isUser && (
+        <span className={`chat-avatar chat-avatar--${avatarVariant || 'beginner'}`} aria-hidden="true">
+          <img src={avatarSrc} alt="" />
+        </span>
+      )}
       <p className={`chat-bubble ui-body-muted${message.pending ? ' is-pending' : ''}`}>
         {message.text}
         {message.pending && <span className="chat-rag-status"><i />공제 자료 검색 중</span>}
