@@ -3721,6 +3721,12 @@ strong, b, h1, h2, h3, h4, h5, h6 { font-weight: 600; }
   line-height: 1;
   font-weight: 700;
   letter-spacing: -0.035em;
+  cursor: pointer;
+  transition: transform var(--motion-fast), opacity var(--motion-fast);
+}
+.mini-chip:active {
+  transform: scale(.97);
+  opacity: .78;
 }
 
 .tax-saving-grid {
@@ -3920,6 +3926,29 @@ strong, b, h1, h2, h3, h4, h5, h6 { font-weight: 600; }
   height: 82px;
   background: #fff;
 }
+.policy-hero-card > div {
+  display: grid;
+  gap: 8px;
+}
+.policy-hero-card .ui-eyebrow,
+.policy-hero-card .ui-body-muted {
+  margin: 0;
+}
+.detail-hero-card > div {
+  display: grid;
+  gap: 8px;
+}
+.policy-detail-hero > div {
+  gap: 10px;
+}
+.detail-hero-card .ui-eyebrow,
+.detail-hero-card .ui-body-muted,
+.detail-hero-card .detail-note {
+  margin: 0;
+}
+.detail-hero-card .detail-amount {
+  margin: 2px 0 0;
+}
 .filter-chip-row,
 .filter-tabs {
   display: flex;
@@ -4012,8 +4041,11 @@ strong, b, h1, h2, h3, h4, h5, h6 { font-weight: 600; }
   display: block;
   margin: 8px 0 7px;
   color: #2458d8;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.06;
+}
+.app-shell .app-card .detail-amount {
+  font-size: 20px;
 }
 .detail-section-card {
   display: grid;
@@ -4442,4 +4474,529 @@ strong, b, h1, h2, h3, h4, h5, h6 { font-weight: 600; }
 }
 .app-shell--home .main2-benefit-chip span {
   font-size: 9.6px;
+}
+
+/* Signup cert focus: remove shield tile background, enlarge the asset, and raise the MyData card. */
+.cert-shield-card {
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+.cert-shield-card img {
+  width: 136px;
+  height: 136px;
+  max-width: none;
+  max-height: none;
+}
+.cert-shield-card + .connection-card {
+  margin-top: -20px;
+}
+
+/* Signup cert shield: make it larger and lift it upward. */
+.cert-shield-card {
+  transform: translateY(-20px);
+  margin-bottom: -18px;
+}
+.cert-shield-card img {
+  width: 156px;
+  height: 156px;
+}
+
+/* Signup cert shield: lift 20px more. */
+.cert-shield-card {
+  transform: translateY(-40px);
+  margin-bottom: -38px;
+}
+
+/* Signup cert shield: add a bit more lower breathing room. */
+.cert-shield-card {
+  margin-bottom: -24px;
+}
+
+/* Signup cert shield: take it out of layout flow entirely. */
+.app-shell--signup .signup-stack {
+  position: relative;
+}
+.cert-shield-card {
+  position: absolute;
+  left: 50%;
+  top: -44px;
+  width: 156px;
+  height: 156px;
+  margin: 0;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+.cert-shield-card + .connection-card {
+  margin-top: 0;
+}
+
+/* Signup cert shield: nudge absolute image to the upper-right. */
+.cert-shield-card {
+  left: calc(50% + 30px);
+  top: -74px;
+}
+
+/* Signup cert shield: move 60px further to the upper-right. */
+.cert-shield-card {
+  left: calc(50% + 90px);
+  top: -134px;
+}
+
+/* Signup cert shield: nudge 10px to the upper-left from current position. */
+.cert-shield-card {
+  left: calc(50% + 80px);
+  top: -144px;
+}
+
+/* Signup cert MyData card: add 20px top spacing. */
+.cert-shield-card + .connection-card {
+  margin-top: 20px;
+}
+
+/* Signup cert skip text: underline and behave like a text button. */
+.signup-footnote--button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+/* Signup MyData linking page before analysis. */
+.signup-page--mydata {
+  padding-top: 22px;
+}
+.signup-page--mydata .signup-question {
+  min-height: calc(100dvh - 120px);
+  justify-content: center;
+  text-align: center;
+}
+.signup-page--mydata .signup-step-label {
+  margin-left: auto;
+  margin-right: auto;
+}
+.signup-page--mydata .signup-lead {
+  align-items: center;
+}
+.mydata-panel {
+  width: 100%;
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+.mydata-sync-orb {
+  width: 132px;
+  height: 132px;
+  margin: 0 auto;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 50% 42%, #ffffff 0 36%, #edf4ff 37% 100%);
+  border: 1px solid #cfe0ff;
+  position: relative;
+  overflow: hidden;
+}
+.mydata-sync-orb::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border-radius: inherit;
+  border: 5px solid #dbe7f8;
+  border-top-color: #3568ef;
+  animation: mydataSpin 1.2s linear infinite;
+}
+.mydata-sync-orb span {
+  position: relative;
+  z-index: 1;
+  color: #2458d8;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+@keyframes mydataSpin { to { transform: rotate(360deg); } }
+.mydata-check-list {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mydata-check-list li {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  padding: 13px 14px;
+  border-radius: 18px;
+  background: #f7fbff;
+  border: 1px solid #dbe7f8;
+  text-align: left;
+}
+.mydata-check-list strong {
+  color: #2458d8;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.mydata-check-list span {
+  color: #344054;
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 660;
+  letter-spacing: -0.035em;
+}
+
+/* Signup cert consent checkboxes: clickable/tappable responsive states. */
+.connection-card .consent-check-list {
+  gap: 8px;
+}
+.connection-card .consent-check-list li {
+  display: block;
+}
+.connection-card .consent-check-list li::before {
+  content: none;
+}
+.consent-check-item {
+  min-height: 34px;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.consent-check-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.consent-check-item span {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f8ff;
+  border: 1px solid #dbe7f8;
+  color: transparent;
+  transition: background var(--motion-fast), border-color var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+.consent-check-item span::before {
+  content: "✓";
+  font-size: 13px;
+  font-weight: 700;
+}
+.consent-check-item input:checked + span {
+  background: #3568ef;
+  border-color: #3568ef;
+  color: #fff;
+}
+.consent-check-item:active span {
+  transform: scale(.92);
+}
+.consent-check-item input:focus-visible + span {
+  outline: 3px solid rgba(53, 104, 239, .22);
+  outline-offset: 2px;
+}
+.consent-check-item em {
+  color: #344054;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 660;
+  letter-spacing: -0.035em;
+}
+
+/* Send completion confetti behind the result content. */
+.complete-panel {
+  isolation: isolate;
+}
+.confetti-field {
+  z-index: -1;
+}
+.benefit-summary-card,
+.benefit-list {
+  position: relative;
+  z-index: 1;
+}
+
+/* Tax saving focus: soften previously bold 700-weight typography to 500. */
+.tax-saving-page .screen-heading h1,
+.tax-saving-page .screen-heading p,
+.tax-saving-card__title,
+.tax-saving-card__amount,
+.tax-saving-card__tag,
+.tax-saving-banner .ui-eyebrow,
+.tax-saving-banner .ui-knowledge-title,
+.tax-saving-banner .blue-pill-cta,
+.tax-saving-page .card-arrow {
+  font-weight: 500;
+}
+
+/* Tax saving specificity fix: override shared ui-* typography weights inside app cards. */
+.app-shell .app-card .tax-saving-card__title,
+.app-shell .app-card .tax-saving-card__amount,
+.app-shell .app-card .tax-saving-card__tag,
+.app-shell .app-card .tax-saving-banner .ui-eyebrow,
+.app-shell .app-card .tax-saving-banner .ui-knowledge-title,
+.app-shell .app-card .tax-saving-banner .blue-pill-cta {
+  font-weight: 500;
+}
+
+/* Tax saving amount size: override shared ui-amount 29px. */
+.app-shell .app-card .tax-saving-card__amount {
+  font-size: 20px;
+}
+
+/* Tax saving amount size adjustment. */
+.app-shell .app-card .tax-saving-card__amount {
+  font-size: 25px;
+}
+
+/* Tax saving amount weight adjustment. */
+.app-shell .app-card .tax-saving-card__amount {
+  font-weight: 600;
+}
+
+/* Tax saving highlights. */
+.tax-saving-highlight {
+  color: #3568ef;
+}
+
+/* Tax saving heading highlight should stay bold. */
+.tax-saving-heading-highlight {
+  font-weight: 700;
+}
+
+/* Chat layout reset: keep refund summary at the top and push everything else to the bottom. */
+.chat-page {
+  min-height: calc(100dvh - 64px - 88px);
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  align-content: stretch;
+}
+.chat-bottom-stack {
+  align-self: end;
+  display: grid;
+  gap: 12px;
+  min-height: 0;
+}
+.chat-bottom-stack .chat-message-list {
+  max-height: 30dvh;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.chat-bottom-stack .chat-input-bar {
+  position: static;
+}
+
+/* Chat FAQ collapse/expand control. */
+.chat-suggestions-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+}
+
+
+/* Chat FAQ header keeps original h2 typography; only the small toggle is custom. */
+.chat-suggestions-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.chat-suggestions-head .ui-section-title {
+  margin: 0;
+}
+.chat-suggestions-toggle {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+/* Restore chat FAQ typography after toggle wiring. */
+.chat-suggestions > div.chat-suggestions-head {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+.chat-suggestions > div.chat-suggestions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.chat-suggestions-head .ui-section-title {
+  font-size: revert;
+  font-weight: revert;
+  line-height: revert;
+}
+.chat-suggestion {
+  font-size: revert;
+  font-weight: revert;
+}
+.chat-suggestions-toggle {
+  font-size: revert;
+  font-weight: revert;
+  line-height: revert;
+}
+
+/* Chat layout correction: message profile/bubble sits directly under refund summary; FAQ/input stay lower. */
+.chat-page {
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+}
+.chat-page > .chat-message-list {
+  align-self: start;
+  max-height: 32dvh;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.chat-bottom-stack {
+  align-self: end;
+}
+
+/* Chat RAG-like pending state before appending the sourced answer. */
+.chat-bubble.is-pending {
+  display: grid;
+  gap: 7px;
+}
+.chat-rag-status {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #dbe7f8;
+  color: #3568ef;
+  font-size: 10.5px;
+  line-height: 1;
+  font-weight: 600;
+}
+.chat-rag-status i {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #3568ef;
+  animation: ragPulse .8s ease-in-out infinite alternate;
+}
+@keyframes ragPulse {
+  from { opacity: .35; transform: scale(.78); }
+  to { opacity: 1; transform: scale(1.12); }
+}
+
+/* Chat summary collapse and shared toggle animation. */
+.chat-summary-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.chat-summary-head .ui-eyebrow {
+  margin: 0;
+}
+.chat-summary-toggle,
+.chat-suggestions-toggle {
+  color: #3568ef;
+  transition: color var(--motion-fast), transform var(--motion-fast), opacity var(--motion-fast);
+}
+.chat-summary-toggle {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+.chat-summary-toggle:active,
+.chat-suggestions-toggle:active {
+  transform: scale(.96);
+  opacity: .72;
+}
+.chat-summary-collapsible,
+.chat-suggestions-list {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: grid-template-rows var(--motion-base), opacity var(--motion-base), transform var(--motion-base);
+  overflow: hidden;
+}
+.chat-summary-collapsible > *,
+.chat-suggestions-list > * {
+  min-height: 0;
+}
+.chat-summary-card.is-open .chat-summary-collapsible,
+.chat-suggestions.is-open .chat-suggestions-list {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: translateY(0);
+}
+.chat-summary-card:not(.is-open) .chat-summary-collapsible,
+.chat-suggestions:not(.is-open) .chat-suggestions-list {
+  margin-top: -9px;
+}
+.chat-suggestions > div.chat-suggestions-list {
+  display: grid;
+}
+.chat-suggestions-list-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Chat scrollbar fix: keep message area clean and prevent stray scrollbar gutters. */
+.chat-page > .chat-message-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.chat-page > .chat-message-list::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+.chat-bottom-stack .chat-message-list {
+  overflow: visible;
+  max-height: none;
+  padding-right: 0;
+}
+
+/* Chat page height: message scroll area should fill the space until the FAQ block. */
+.app-shell--tax-chat .app-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.app-shell--tax-chat .chat-page {
+  flex: 1 1 auto;
+  min-height: 0;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  padding-bottom: 0;
+}
+.app-shell--tax-chat .chat-page > .chat-message-list {
+  min-height: 0;
+  max-height: none;
+  align-self: stretch;
+  align-content: start;
+}
+.app-shell--tax-chat .chat-bottom-stack {
+  align-self: stretch;
 }

@@ -50,7 +50,14 @@ export const signupSteps = [
     progressLabel: '4/4 단계',
     lead: '주거 정보를 알려주세요',
     subLead: '주거 관련 혜택 분석에 활용돼요.',
-    cta: '가입 완료하기',
+    cta: '마이데이터 연동하기',
+  },
+  {
+    id: 'mydata',
+    label: '마이데이터 연동',
+    title: '국세청 마이데이터를\n연동하고 있어요',
+    lead: '필요한 정보만 안전하게 불러올게요',
+    subLead: '연동 후 바로 혜택 분석을 시작해요.',
   },
   {
     id: 'analysis',
@@ -113,6 +120,6 @@ export function stepPath(personaId, stepId) {
   return `/${personaId}/signup/${stepId}`;
 }
 
-export function pagePath(personaId, page) {
-  return `/${personaId}/${page}`;
+export function pagePath(personaId, page, detailId) {
+  return `/${personaId}/${page}${detailId ? `/${detailId}` : ''}`;
 }

@@ -8,8 +8,8 @@ import { getRememberedPersonaId } from '../../routes/routeConfig.js';
 const imageMap = { rentReceipt, benefitCoins };
 
 export function DeductionDetailPage() {
-  const { personaId = getRememberedPersonaId() } = useParams();
-  const detail = getDeductionDetail(personaId);
+  const { personaId = getRememberedPersonaId(), deductionId } = useParams();
+  const detail = getDeductionDetail(personaId, deductionId);
   return (
     <section className="screen-page detail-page" aria-label="공제 상세보기">
       <DetailHeroCard eyebrow="공제 상세보기" title={detail.title} amountText={detail.amountText} summary={detail.summary} imageSrc={imageMap[detail.image]} />

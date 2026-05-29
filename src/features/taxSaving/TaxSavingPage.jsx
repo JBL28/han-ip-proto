@@ -17,12 +17,12 @@ export function TaxSavingPage() {
   return (
     <section className="screen-page tax-saving-page" aria-label="절세 추천">
       <header className="screen-heading">
-        <h1>절세 추천</h1>
-        <p>지금 받을 수 있는 혜택을 확인해보세요</p>
+        <h1><span className="tax-saving-highlight tax-saving-heading-highlight">절세 추천</span></h1>
+        <p><span className="tax-saving-highlight">지금 받을 수 있는 혜택</span>을 확인해보세요</p>
       </header>
       <div className="tax-saving-grid" aria-label="추천 공제 목록">
         {taxSavingCards.map((item) => (
-          <TaxSavingBenefitCard key={item.id} item={item} imageSrc={imageMap[item.image]} to={pagePath(personaId, 'deduction-detail')} />
+          <TaxSavingBenefitCard key={item.id} item={item} imageSrc={imageMap[item.image]} to={pagePath(personaId, item.detailPage, item.detailId)} />
         ))}
       </div>
       <TaxSavingSupportBanner banner={supportBanner} imageSrc={supportSearch} to={pagePath(personaId, 'policies')} />

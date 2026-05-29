@@ -36,6 +36,7 @@
  * - 긴 mock 문구가 레이아웃을 넘치면 데이터를 줄이지 말고 CSS 말줄임/줄바꿈 규칙으로 처리한다.
  *   원문 보존이 필요한 추천 칩은 title/aria-label로 전체 문구를 유지한다.
  */
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import GaugeComponent from 'react-gauge-component';
 import { AppCard } from './AppCard.jsx';
@@ -58,7 +59,7 @@ export function BenefitAlertCard({ alert, recommendations, personaId, deductionD
       </article>
       <div className="main2-benefit-row" aria-label="추천 정책 및 공제 목록">
         {recommendations.map((item) => (
-          <BenefitChip item={item} to={pagePath(personaId, item.detailPage)} key={item.title} />
+          <BenefitChip item={item} to={pagePath(personaId, item.detailPage, item.detailId)} key={item.title} />
         ))}
       </div>
     </AppCard>
@@ -78,14 +79,53 @@ export function KnowledgeBiteCard({ knowledge, personaId, visualSrc }) {
             : knowledge.title}
         </strong>
         <p className="ui-body-muted">{knowledge.description}</p>
-        <Link className="main2-text-link ui-action" to={pagePath(personaId, knowledge.detailPage)}>더 알아보기 &gt;</Link>
+        <Link className="main2-text-link ui-action" to={pagePath(personaId, knowledge.detailPage, knowledge.detailId)}>더 알아보기 &gt;</Link>
       </div>
       {visualSrc && <img className="knowledge-visual" src={visualSrc} alt="" aria-hidden="true" />}
     </AppCard>
   );
 }
 
+const taxTemperatureAnimationMs = 1200;
+
+function easeOutCubic(progress) {
+  return 1 - Math.pow(1 - progress, 3);
+}
+
 export function TaxTemperatureCard({ temperature = 72, calendar, personaId }) {
+  const [animatedTemperature, setAnimatedTemperature] = useState(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      setAnimatedTemperature(temperature);
+      return undefined;
+    }
+
+    const shouldReduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (shouldReduceMotion) {
+      setAnimatedTemperature(temperature);
+      return undefined;
+    }
+
+    let frameId = 0;
+    let startTime = 0;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / taxTemperatureAnimationMs, 1);
+      setAnimatedTemperature(Math.round(temperature * easeOutCubic(progress)));
+
+      if (progress < 1) {
+        frameId = window.requestAnimationFrame(animate);
+      }
+    };
+
+    setAnimatedTemperature(0);
+    frameId = window.requestAnimationFrame(animate);
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [temperature]);
+
   return (
     <AppCard className="main2-tax-temp-card" aria-label="절세온도 계기판">
       <div className="main2-section-head">
@@ -96,7 +136,7 @@ export function TaxTemperatureCard({ temperature = 72, calendar, personaId }) {
           id="tax-temperature-gauge"
           style={{ overflow: 'visible', maxHeight: 'none' }}
           type="semicircle"
-          value={temperature}
+          value={animatedTemperature}
           minValue={0}
           maxValue={100}
           marginInPercent={{ top: 0.06, right: 0.08, bottom: 0, left: 0.08 }}
@@ -125,14 +165,14 @@ export function TaxTemperatureCard({ temperature = 72, calendar, personaId }) {
         />
       </div>
       <div className="main2-tax-temp-readout">
-        <strong className="ui-amount">{temperature}<em className="ui-amount-unit">℃</em></strong>
+        <strong className="ui-amount">{animatedTemperature}<em className="ui-amount-unit">℃</em></strong>
         <span className="ui-caption">조금만 챙기면 더 올라가요</span>
       </div>
       <div className="main2-tax-boost">
         <h3 className="ui-section-title">절세 온도 높이기</h3>
         <div className="main2-schedule-list">
           {calendar.schedules.map((schedule) => (
-            <Link className={`main2-schedule-item main2-schedule-item--${schedule.type}`} to={pagePath(personaId, schedule.detailPage)} key={`${schedule.type}-${schedule.title}`}>
+            <Link className={`main2-schedule-item main2-schedule-item--${schedule.type}`} to={pagePath(personaId, schedule.detailPage, schedule.detailId)} key={`${schedule.type}-${schedule.title}`}>
               <strong className="ui-list-title">{schedule.title}</strong>
               <span className="ui-caption">{schedule.period}</span>
             </Link>

@@ -118,8 +118,10 @@ export function AppRoutes() {
       <Route path=":personaId/home" element={<PersonaGuard><ShellHome /></PersonaGuard>} />
       <Route path=":personaId/tax-saving" element={<PersonaGuard><ShellTaxSaving /></PersonaGuard>} />
       <Route path=":personaId/tax-chat" element={<PersonaGuard><ShellTaxChat /></PersonaGuard>} />
+      <Route path=":personaId/deduction-detail/:deductionId" element={<PersonaGuard><ShellDeductionDetail /></PersonaGuard>} />
       <Route path=":personaId/deduction-detail" element={<PersonaGuard><ShellDeductionDetail /></PersonaGuard>} />
       <Route path=":personaId/policies" element={<PersonaGuard><ShellPolicies /></PersonaGuard>} />
+      <Route path=":personaId/policy-detail/:policyId" element={<PersonaGuard><ShellPolicyDetail /></PersonaGuard>} />
       <Route path=":personaId/policy-detail" element={<PersonaGuard><ShellPolicyDetail /></PersonaGuard>} />
       <Route path=":personaId/notifications" element={<PersonaGuard><ShellNotifications /></PersonaGuard>} />
       <Route path=":personaId/my" element={<PersonaGuard><ShellMy /></PersonaGuard>} />

@@ -33,7 +33,7 @@ export function PoliciesPage() {
         {categories.map((item) => <PolicyFilterChip key={item} label={item} selected={category === item} onClick={() => setCategory(item)} />)}
       </div>
       <div className="policy-list">
-        {filtered.map((policy) => <PolicyRecommendationCard key={policy.id} policy={policy} imageSrc={imageMap[policy.image]} to={pagePath(personaId, 'policy-detail')} />)}
+        {filtered.map((policy) => <PolicyRecommendationCard key={policy.id} policy={policy} imageSrc={imageMap[policy.image]} to={pagePath(personaId, 'policy-detail', policy.id)} />)}
       </div>
       <Link className="floating-chat-card" to={pagePath(personaId, 'tax-chat')}>추천 정책이 궁금하다면 AI에게 물어보기 ›</Link>
     </section>

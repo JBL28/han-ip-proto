@@ -26,7 +26,8 @@ import { BenefitAlertCard, KnowledgeBiteCard, TaxTemperatureCard } from '../../c
 export function HomePage() {
   const { personaId = getRememberedPersonaId() } = useParams();
   const homeData = getPersonaHomeData(personaId);
-  const deductionDetailPath = pagePath(personaId, 'deduction-detail');
+  const primaryRecommendation = homeData.recommendations[0];
+  const deductionDetailPath = pagePath(personaId, primaryRecommendation.detailPage, primaryRecommendation.detailId);
   return (
     <section className="main2-page" aria-label="메인 페이지">
       <BenefitAlertCard

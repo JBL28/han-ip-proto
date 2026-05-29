@@ -45,6 +45,7 @@ export function SignupFlow() {
   const next = signupSteps[Math.min(signupSteps.length - 1, stepIndex + 1)].id;
   const isFirst = stepIndex === 0;
   const isAnalysis = step.id === 'analysis';
+  const isMyData = step.id === 'mydata';
   const isComplete = step.id === 'complete';
   const progressIndex = inputStepIds.indexOf(step.id);
   const inputProgress = progressIndex >= 0 ? Math.round(((progressIndex + 1) / inputStepIds.length) * 100) : 100;
@@ -54,9 +55,15 @@ export function SignupFlow() {
   }, [form]);
 
   useEffect(() => {
-    if (step.id !== 'analysis') return undefined;
-    const timer = window.setTimeout(() => navigate(stepPath(personaId, 'complete')), 1700);
-    return () => window.clearTimeout(timer);
+    if (step.id === 'mydata') {
+      const timer = window.setTimeout(() => navigate(stepPath(personaId, 'analysis')), 2000);
+      return () => window.clearTimeout(timer);
+    }
+    if (step.id === 'analysis') {
+      const timer = window.setTimeout(() => navigate(stepPath(personaId, 'complete')), 2000);
+      return () => window.clearTimeout(timer);
+    }
+    return undefined;
   }, [navigate, step.id, personaId]);
 
   const update = (patch) => setForm((current) => ({ ...current, ...patch }));
@@ -75,7 +82,7 @@ export function SignupFlow() {
   return (
     <AppShell personaId={personaId} page="signup" signup>
       <section className={`signup-page signup-page--${step.id}`}>
-        {!isAnalysis && !isComplete && (
+        {!isAnalysis && !isMyData && !isComplete && (
           <header className="signup-topbar" aria-label="회원가입 진행률">
             <Link className="signup-back-link" to={stepPath(personaId, previous)} aria-disabled={isFirst ? 'true' : undefined}><ChevronLeftIcon /></Link>
             <strong>회원가입</strong>
@@ -86,7 +93,7 @@ export function SignupFlow() {
 
         <section className="signup-question" aria-labelledby="signup-question-title">
           <p className="signup-step-label">{step.label}</p>
-          <h1 id="signup-question-title">{step.title}</h1>
+          <h1 id="signup-question-title">{renderLines(step.title)}</h1>
           {step.progressLabel && <p className="signup-step-count">{step.progressLabel}</p>}
           <div className="signup-lead">
             <strong>{renderLines(step.lead)}</strong>
@@ -95,7 +102,7 @@ export function SignupFlow() {
           <StepBody stepId={step.id} form={form} update={update} />
         </section>
 
-        {!isAnalysis && (
+        {!isAnalysis && !isMyData && step.id !== 'cert' && (
           <SignupActionBar
             single={isComplete}
             secondary={!isComplete ? { as: Link, to: stepPath(personaId, previous), 'aria-disabled': isFirst ? 'true' : undefined, children: '이전' } : undefined}
@@ -116,31 +123,54 @@ function StepBody({ stepId, form, update }) {
   if (stepId === 'family') return <FamilyStep form={form} update={update} />;
   if (stepId === 'income') return <IncomeStep form={form} update={update} />;
   if (stepId === 'residence') return <ResidenceStep form={form} update={update} />;
+  if (stepId === 'mydata') return <MyDataStep />;
   if (stepId === 'analysis') return <AnalysisStep />;
   return <CompleteStep />;
 }
 
+const certConsentItems = [
+  '본인확인 서비스 이용 동의',
+  '개인정보 수집·이용 동의',
+  '고유식별정보 처리 동의',
+  '통신사 이용약관 동의',
+];
+
 function CertStep({ form, update }) {
+  const { personaId = getRememberedPersonaId() } = useParams();
+  const navigate = useNavigate();
+  const [consents, setConsents] = useState(() => certConsentItems.reduce((acc, item) => ({ ...acc, [item]: false }), {}));
+  const goFamily = () => navigate(stepPath(personaId, 'family'));
+  const selectAuth = (authMethod) => {
+    update({ authMethod });
+    goFamily();
+  };
+  const toggleConsent = (item) => setConsents((current) => ({ ...current, [item]: !current[item] }));
+
   return (
     <div className="signup-stack">
       <div className="cert-shield-card" aria-hidden="true"><img src={verificationShield} alt="" /></div>
       <article className="connection-card">
-        <strong>국세청 마이데이터로 자동 연결돼요</strong>
-        <ul>
-          <li>소득 및 세금 정보</li>
-          <li>가족관계 정보</li>
-          <li>건강보험료 정보</li>
-          <li>월세 등 주거정보</li>
+        <strong>본인확인 후 안전하게 진행돼요</strong>
+        <ul className="consent-check-list">
+          {certConsentItems.map((item) => (
+            <li key={item}>
+              <label className="consent-check-item">
+                <input type="checkbox" checked={!!consents[item]} onChange={() => toggleConsent(item)} />
+                <span aria-hidden="true" />
+                <em>{item}</em>
+              </label>
+            </li>
+          ))}
         </ul>
       </article>
       <EqualButtonGroup
         label="간편 인증 방식"
         options={[
-          { value: 'kakao', label: '카카오 인증', selected: form.authMethod === 'kakao', onClick: () => update({ authMethod: 'kakao' }) },
-          { value: 'pass', label: 'PASS 인증', selected: form.authMethod === 'pass', onClick: () => update({ authMethod: 'pass' }) },
+          { value: 'kakao', label: '카카오 인증', selected: form.authMethod === 'kakao', onClick: () => selectAuth('kakao') },
+          { value: 'pass', label: 'PASS 인증', selected: form.authMethod === 'pass', onClick: () => selectAuth('pass') },
         ]}
       />
-      <p className="signup-footnote">나중에 직접 입력할 수도 있어요</p>
+      <button className="signup-footnote signup-footnote--button" type="button" onClick={goFamily}>나중에 직접 입력할 수도 있어요</button>
     </div>
   );
 }
@@ -253,6 +283,21 @@ function MoneyField({ label, value, onChange }) {
     </label>
   );
 }
+
+function MyDataStep() {
+  return (
+    <div className="mydata-panel" aria-live="polite">
+      <div className="mydata-sync-orb"><span>연동 중</span></div>
+      <ul className="mydata-check-list">
+        <li><strong>가져오는 정보</strong><span>소득·세금·가족·주거 정보</span></li>
+        <li><strong>이용 목적</strong><span>맞춤 절세 혜택 분석</span></li>
+        <li><strong>보관 기간</strong><span>서비스 이용 중 또는 철회 전까지</span></li>
+        <li><strong>보안 안내</strong><span>필요한 항목만 연결하고 언제든 철회 가능</span></li>
+      </ul>
+    </div>
+  );
+}
+
 
 function AnalysisStep() {
   return (

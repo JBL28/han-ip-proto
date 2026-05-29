@@ -16,7 +16,7 @@ export function NotificationsPage() {
       <header className="screen-heading"><h1>알림</h1><p>놓치기 쉬운 혜택과 처리 현황을 확인해보세요</p></header>
       <NotificationFilterTabs active={active} onChange={setActive} />
       <div className="notification-list">
-        {visible.map((item) => <NotificationItemCard key={item.id} item={item} to={pagePath(personaId, item.toPage)} read={readIds.includes(item.id)} onRead={() => setReadIds((ids) => [...new Set([...ids, item.id])])} />)}
+        {visible.map((item) => <NotificationItemCard key={item.id} item={item} to={pagePath(personaId, item.toPage, item.detailId)} read={readIds.includes(item.id)} onRead={() => setReadIds((ids) => [...new Set([...ids, item.id])])} />)}
       </div>
     </section>
   );

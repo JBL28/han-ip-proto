@@ -5,14 +5,14 @@ import trainingDetail from '../../assets/policy-detail/training-detail.svg';
 import rentDetail from '../../assets/policy-detail/rent-detail.svg';
 import { AppCard } from '../../components/AppCard.jsx';
 import { PolicyDetailHero, PolicyFieldList } from '../../components/PolicyCards.jsx';
-import { getPrimaryPolicy } from '../../data/screenData.js';
+import { getPolicyDetail } from '../../data/screenData.js';
 import { getRememberedPersonaId, pagePath } from '../../routes/routeConfig.js';
 
 const imageMap = { childCareDetail, cultureDetail, trainingDetail, rentDetail };
 
 export function PolicyDetailPage() {
-  const { personaId = getRememberedPersonaId() } = useParams();
-  const policy = getPrimaryPolicy(personaId);
+  const { personaId = getRememberedPersonaId(), policyId } = useParams();
+  const policy = getPolicyDetail(personaId, policyId);
   const fields = [
     { label: '지원 대상', value: policy.tags.join(', ') },
     { label: '지원 주기', value: policy.cycle },

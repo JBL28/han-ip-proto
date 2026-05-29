@@ -18,7 +18,7 @@ export function TaxSavingSupportBanner({ banner, imageSrc, to }) {
     <AppCard className="tax-saving-banner">
       <div className="tax-saving-banner__copy">
         <p className="ui-eyebrow">{banner.title}</p>
-        <strong className="ui-knowledge-title">{banner.lines[0]}<br />{banner.lines[1]}</strong>
+        <strong className="ui-knowledge-title">나에게 맞는 <span className="tax-saving-highlight">숨은 공제 혜택</span>을<br />{banner.lines[1]}</strong>
         <Link className="blue-pill-cta ui-action" to={to}>{banner.ctaLabel}</Link>
       </div>
       <span className="visual-tile tax-saving-banner__visual"><img src={imageSrc} alt="" aria-hidden="true" /></span>
