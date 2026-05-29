@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
-import profileHanbeoteam from '../../assets/my/profile-hanbeoteam.svg';
-import profileKimgatsaeng from '../../assets/my/profile-kimgatsaeng.svg';
+import profileHanbeoteam from '../../assets/my/profile-hanbeoteam-character.png';
+import profileKimgatsaeng from '../../assets/my/profile-kimgatsaeng-character.png';
 import { BenefitTotalCard, MyMenuList, MyProfileCard } from '../../components/MyPageCards.jsx';
 import { getMyPageData } from '../../data/screenData.js';
 import { getPersona, getRememberedPersonaId } from '../../routes/routeConfig.js';
