@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "worktreeRoot": "/workspaces/alpine/han-ip",
+  "gitDir": "/workspaces/alpine/han-ip/.git",
+  "indexMtimeMs": 1780018466842.4124,
+  "indexSize": 11270,
+  "map": "  src/data/: personaMockData\n  src/features/: signupData\n  src/routes/: routeConfig\n  dist/: index-BSksrCa3\n  (root): vite.config",
+  "createdAt": "2026-05-29T01:43:08.193Z"
+}
