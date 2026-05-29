@@ -36,6 +36,24 @@
           "completion_source": "notify-fallback-watcher"
         }
       }
+    },
+    "omx-1780026070032-xptty0": {
+      "session_id": "omx-1780026070032-xptty0",
+      "leader_thread_id": "019e71d2-5531-74a0-8cef-605e8809e48b",
+      "updated_at": "2026-05-29T03:41:15.791Z",
+      "threads": {
+        "019e71d2-5531-74a0-8cef-605e8809e48b": {
+          "thread_id": "019e71d2-5531-74a0-8cef-605e8809e48b",
+          "kind": "leader",
+          "first_seen_at": "2026-05-29T03:41:15.791Z",
+          "last_seen_at": "2026-05-29T03:41:15.791Z",
+          "last_turn_id": "019e71d2-55f7-70e0-b330-94e4435a8ca9",
+          "completed_at": "2026-05-29T03:41:15.791Z",
+          "last_completed_turn_id": "019e71d2-55f7-70e0-b330-94e4435a8ca9",
+          "turn_count": 1,
+          "completion_source": "notify-fallback-watcher"
+        }
+      }
     }
   }
 }

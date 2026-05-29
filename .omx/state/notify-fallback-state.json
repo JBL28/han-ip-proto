@@ -1,7 +1,7 @@
 {
-  "pid": 73333,
-  "parent_pid": 73319,
-  "started_at": "2026-05-29T01:43:08.311Z",
+  "pid": 75437,
+  "parent_pid": 75424,
+  "started_at": "2026-05-29T03:41:10.166Z",
   "cwd": "/workspaces/alpine/han-ip",
   "notify_script": "/usr/local/lib/node_modules/oh-my-codex/dist/scripts/notify-hook.js",
   "authority_only": false,
@@ -10,14 +10,14 @@
   "idle_max_poll_ms": 1000,
   "pid_file": "/workspaces/alpine/han-ip/.omx/state/notify-fallback.pid",
   "max_lifetime_ms": 21600000,
-  "tracked_files": 2,
-  "seen_turns": 2,
+  "tracked_files": 1,
+  "seen_turns": 1,
   "dispatch_drain": {
     "enabled": true,
     "max_per_tick": 5,
-    "run_count": 16826,
+    "run_count": 131,
     "leader_only": true,
-    "last_tick_at": "2026-05-29T02:58:11.615Z",
+    "last_tick_at": "2026-05-29T03:41:46.232Z",
     "last_result": {
       "processed": 0,
       "skipped": 0,
@@ -30,16 +30,16 @@
     "leader_only": true,
     "stale_threshold_ms": 180000,
     "precomputed_leader_stale": true,
-    "last_tick_at": "2026-05-29T02:58:11.616Z",
+    "last_tick_at": "2026-05-29T03:41:46.232Z",
     "last_error": null,
-    "run_count": 16826
+    "run_count": 131
   },
   "ralph_continue_steer": {
     "enabled": true,
     "cadence_ms": 60000,
     "message": "Ralph loop active continue",
     "active": false,
-    "last_state_check_at": "2026-05-29T02:58:11.681Z",
+    "last_state_check_at": "2026-05-29T03:41:46.248Z",
     "last_sent_at": "",
     "cooldown_anchor_at": "",
     "last_reason": "blocked_by_current_session",
@@ -57,10 +57,10 @@
   "fallback_auto_nudge": {
     "enabled": true,
     "stall_ms": 5000,
-    "last_tick_at": "2026-05-29T02:58:11.669Z",
-    "last_turn_at": "2026-05-29T02:57:18.807Z",
-    "last_turn_count": 2,
-    "last_message": "구현 완료했습니다.\n\n주요 구현:\n- 4~12번 화면 placeholder 전부 실제 UI로 교체\n  - 절세추천\n  - 절세챗봇\n  - 정책추천\n  - 공제상세\n  - 정책상세\n",
+    "last_tick_at": "2026-05-29T03:41:46.236Z",
+    "last_turn_at": "2026-05-29T03:41:15.831Z",
+    "last_turn_count": 1,
+    "last_message": "I can’t bypass permission/sandbox requirements. I’ll proceed autonomously within the available works",
     "last_reason": "eligible_but_not_sent",
     "last_error": null,
     "last_nudged_signature": "",
@@ -80,9 +80,11 @@
     "max_ms": 1000,
     "current_ms": 250,
     "idle_streak": 0,
-    "last_tick_at": "2026-05-29T02:58:11.681Z",
-    "last_activity_at": "2026-05-29T02:58:11.681Z",
+    "last_tick_at": "2026-05-29T03:41:46.248Z",
+    "last_activity_at": "2026-05-29T03:41:46.248Z",
     "last_activity_reason": "leader_nudge"
   },
-  "last_cycle_activity": "leader_nudge"
+  "stop_reason": "parent_gone",
+  "stop_signal": null,
+  "stopping": true
 }

@@ -1,9 +1,9 @@
 {
-  "session_id": "omx-1780018988160-ik91kx",
-  "started_at": "2026-05-29T01:43:08.205Z",
+  "session_id": "omx-1780026070032-xptty0",
+  "started_at": "2026-05-29T03:41:10.062Z",
   "cwd": "/workspaces/alpine/han-ip",
-  "pid": 73319,
+  "pid": 75424,
   "platform": "linux",
-  "pid_start_ticks": 720155,
-  "pid_cmdline": "node /usr/local/bin/omx --high"
+  "pid_start_ticks": 1428386,
+  "pid_cmdline": "node /usr/local/bin/omx --high dangerously-skip-permissions"
 }

@@ -35,6 +35,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 a { color: inherit; text-decoration: none; }
+strong, b, h1, h2, h3, h4, h5, h6 { font-weight: 600; }
 
 .app-shell {
   width: min(100%, var(--app-max-width));
@@ -89,7 +90,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
   font-size: 27px;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.04em;
 }
 
@@ -154,7 +155,7 @@ a { color: inherit; text-decoration: none; }
   color: #151922;
   font-size: 15px;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   transition: color var(--motion-base), transform var(--motion-fast), opacity var(--motion-base);
 }
@@ -225,7 +226,7 @@ a { color: inherit; text-decoration: none; }
   --radius-card: 24px;
   --radius-control: 16px;
   --space-section: 18px;
-  --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
+  --shadow-card: none;
 }
 
 
@@ -256,7 +257,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--accent-soft);
   color: var(--accent);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -277,7 +278,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
   color: var(--accent);
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -286,7 +287,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
   font-size: clamp(30px, 8.4vw, 38px);
   line-height: 1.13;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.06em;
 }
 
@@ -319,7 +320,7 @@ a { color: inherit; text-decoration: none; }
   gap: 6px;
   color: var(--muted);
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 
@@ -334,7 +335,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   color: var(--muted);
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .progress-step.is-active .progress-dot {
@@ -354,7 +355,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   background: var(--surface);
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
 }
 
 
@@ -376,7 +377,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--accent-soft);
   color: var(--accent);
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .section-heading h2 {
@@ -384,7 +385,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
   font-size: 20px;
   line-height: 1.28;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.055em;
 }
 
@@ -407,7 +408,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--surface-soft);
   color: var(--text);
   font-size: 15px;
-  font-weight: 750;
+  font-weight: 650;
   letter-spacing: -0.035em;
 }
 
@@ -459,7 +460,7 @@ a { color: inherit; text-decoration: none; }
 .counter-card strong,
 .mock-field strong {
   display: block;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.04em;
 }
 .single-card em,
@@ -489,7 +490,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--accent);
   color: #fff;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .counter-list,
@@ -562,7 +563,7 @@ a { color: inherit; text-decoration: none; }
   background: #fff;
   color: var(--text);
   font-size: 14px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.035em;
   transition: transform var(--motion-fast), border-color var(--motion-base), background var(--motion-base), color var(--motion-base);
 }
@@ -585,7 +586,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 5px;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 .mock-field strong {
@@ -604,7 +605,7 @@ a { color: inherit; text-decoration: none; }
   padding: 8px 8px 8px 14px;
   color: var(--text);
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .yes-no-controls {
@@ -660,7 +661,7 @@ a { color: inherit; text-decoration: none; }
   --touch-target: 48px;
   --radius-card: 24px;
   --radius-control: 16px;
-  --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
+  --shadow-card: none;
 }
 
 
@@ -705,7 +706,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--accent-soft);
   color: var(--accent);
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.02em;
 }
 
@@ -774,14 +775,14 @@ a { color: inherit; text-decoration: none; }
 .signup-progress-copy strong {
   color: var(--text);
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.03em;
 }
 .signup-progress-copy p {
   margin: 0;
   color: var(--muted);
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .signup-progress-track {
   height: 7px;
@@ -813,7 +814,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
   font-size: clamp(31px, 8.8vw, 40px);
   line-height: 1.12;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.065em;
 }
 
@@ -840,7 +841,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   background: var(--surface);
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
 }
 
 .choice-card {
@@ -862,7 +863,7 @@ a { color: inherit; text-decoration: none; }
 .choice-card strong {
   display: block;
   font-size: 17px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .choice-card em,
@@ -896,7 +897,7 @@ a { color: inherit; text-decoration: none; }
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .info-panel ul,
@@ -933,11 +934,11 @@ a { color: inherit; text-decoration: none; }
   display: block;
   color: var(--text);
   font-size: 17px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .counter-copy p { margin-top: 4px; font-size: 12px; }
-.bold-value b { color: var(--text); font-weight: 950; }
+.bold-value b { color: var(--text); font-weight: 700; }
 .counter-control {
   min-width: 122px;
   height: 48px;
@@ -964,7 +965,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
   text-align: center;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 .age-control {
@@ -979,7 +980,7 @@ a { color: inherit; text-decoration: none; }
 .field-card span {
   color: var(--muted);
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.025em;
 }
 
@@ -997,7 +998,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--surface);
   color: var(--text);
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
   transition: transform var(--motion-fast), border-color var(--motion-base), background var(--motion-base), color var(--motion-base);
 }
@@ -1019,7 +1020,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--surface-soft);
   color: var(--text);
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.045em;
   outline: none;
 }
@@ -1035,7 +1036,7 @@ a { color: inherit; text-decoration: none; }
 .field-input-row strong {
   color: var(--text);
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .yes-no-row {
@@ -1047,7 +1048,7 @@ a { color: inherit; text-decoration: none; }
   padding: 10px 10px 10px 17px;
   color: var(--text);
   font-size: 16px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .yes-no-controls { display: inline-flex; gap: 7px; }
@@ -1067,12 +1068,12 @@ a { color: inherit; text-decoration: none; }
 .review-list strong {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .review-list span {
   color: var(--text);
   font-size: 16px;
-  font-weight: 850;
+  font-weight: 750;
   line-height: 1.42;
   letter-spacing: -0.04em;
 }
@@ -1102,7 +1103,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
   transition: transform var(--motion-fast), opacity var(--motion-base);
 }
@@ -1172,7 +1173,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius-card);
   background: var(--surface);
   border: 1px solid var(--line);
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
 }
 
 .hero-card h1 {
@@ -1180,7 +1181,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--text);
   font-size: 34px;
   line-height: 1.12;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.06em;
 }
 
@@ -1204,7 +1205,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--surface);
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+  box-shadow: none;
   transition: transform var(--motion-fast), border-color var(--motion-base), background var(--motion-base);
 }
 .persona-card:active { transform: scale(.99); }
@@ -1215,14 +1216,14 @@ a { color: inherit; text-decoration: none; }
 .persona-card span {
   color: var(--accent);
   font-size: 13px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .persona-card strong {
   color: var(--text);
   font-size: 16px;
   line-height: 1.34;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.045em;
 }
 .persona-card em {
@@ -1230,7 +1231,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px;
   line-height: 1.42;
   font-style: normal;
-  font-weight: 760;
+  font-weight: 660;
   letter-spacing: -0.03em;
 }
 
@@ -1245,7 +1246,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   justify-content: center;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 
@@ -1324,7 +1325,7 @@ a { color: inherit; text-decoration: none; }
   color: #111827;
   text-align: center;
   font-size: 17px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 
@@ -1348,7 +1349,7 @@ a { color: inherit; text-decoration: none; }
   gap: 6px;
   color: #3568ef;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .signup-step-label::before {
@@ -1370,7 +1371,7 @@ a { color: inherit; text-decoration: none; }
   color: #101828;
   font-size: 24px;
   line-height: 1.24;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.055em;
 }
 
@@ -1378,7 +1379,7 @@ a { color: inherit; text-decoration: none; }
   margin: 3px 0 0;
   color: #64748b;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.03em;
 }
 
@@ -1392,14 +1393,14 @@ a { color: inherit; text-decoration: none; }
   color: #101828;
   font-size: 28px;
   line-height: 1.18;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 .signup-lead span {
   color: #667085;
   font-size: 15px;
   line-height: 1.48;
-  font-weight: 760;
+  font-weight: 660;
   letter-spacing: -0.035em;
 }
 
@@ -1413,7 +1414,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(219, 231, 248, .96);
   border-radius: 24px;
   background: rgba(255,255,255,.92);
-  box-shadow: 0 18px 42px rgba(31, 64, 120, .10);
+  box-shadow: none;
 }
 
 .connection-card {
@@ -1425,7 +1426,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0 0 14px;
   color: #101828;
   font-size: 17px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.045em;
 }
 .connection-card ul {
@@ -1442,7 +1443,7 @@ a { color: inherit; text-decoration: none; }
   gap: 9px;
   color: #344054;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .connection-card li::before,
@@ -1458,7 +1459,7 @@ a { color: inherit; text-decoration: none; }
   background: #eaf1ff;
   color: #3568ef;
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .auth-choice-row {
@@ -1475,7 +1476,7 @@ a { color: inherit; text-decoration: none; }
   background: rgba(255,255,255,.94);
   color: #101828;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .auth-choice.is-selected,
@@ -1492,7 +1493,7 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
   font-size: 13px;
   line-height: 1.45;
-  font-weight: 760;
+  font-weight: 660;
   letter-spacing: -0.03em;
 }
 .signup-footnote--left { text-align: left; padding: 0 4px; }
@@ -1521,7 +1522,7 @@ a { color: inherit; text-decoration: none; }
   color: #98a2b3;
   font-style: normal;
   font-size: 16px;
-  font-weight: 950;
+  font-weight: 700;
 }
 .toggle-card.is-selected i {
   background: #4f7cff;
@@ -1549,7 +1550,7 @@ a { color: inherit; text-decoration: none; }
 .child-row strong,
 .money-row span {
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .child-row input,
@@ -1563,7 +1564,7 @@ a { color: inherit; text-decoration: none; }
   background: #f6f9ff;
   color: #101828;
   font-size: 15px;
-  font-weight: 850;
+  font-weight: 750;
   text-align: right;
   outline: none;
 }
@@ -1571,7 +1572,7 @@ a { color: inherit; text-decoration: none; }
 .money-row strong {
   color: #101828;
   font-size: 14px;
-  font-weight: 950;
+  font-weight: 700;
   white-space: nowrap;
 }
 .add-child-button {
@@ -1597,7 +1598,7 @@ a { color: inherit; text-decoration: none; }
 .section-question {
   color: #101828;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .field-card input {
@@ -1663,7 +1664,7 @@ a { color: inherit; text-decoration: none; }
   background: #fff;
   color: #2458d8;
   font-size: 24px;
-  font-weight: 950;
+  font-weight: 700;
 }
 .analysis-panel ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
 .complete-panel { display: grid; gap: 14px; }
@@ -1682,13 +1683,13 @@ a { color: inherit; text-decoration: none; }
 .benefit-summary-card span {
   color: #667085;
   font-size: 14px;
-  font-weight: 850;
+  font-weight: 750;
 }
 .benefit-summary-card strong {
   color: #2458d8;
   font-size: 40px;
   line-height: 1;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 .benefit-list { padding: 6px 18px; }
@@ -1704,7 +1705,7 @@ a { color: inherit; text-decoration: none; }
 .benefit-list dd {
   margin: 0;
   font-size: 15px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .benefit-list dt { color: #667085; }
@@ -1740,7 +1741,7 @@ a { color: inherit; text-decoration: none; }
   color: #101828;
   font-size: 28px;
   line-height: 1.18;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.065em;
 }
 .home-benefit-card,
@@ -1749,7 +1750,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid #dbe7f8;
   border-radius: 24px;
   background: #fff;
-  box-shadow: 0 16px 36px rgba(31, 64, 120, .08);
+  box-shadow: none;
   padding: 20px;
 }
 .home-benefit-card,
@@ -1762,20 +1763,20 @@ a { color: inherit; text-decoration: none; }
 .home-list-card span {
   color: #667085;
   font-size: 14px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.035em;
 }
 .home-benefit-card strong {
   color: #2458d8;
   font-size: 38px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 .home-mission-card strong,
 .home-list-card strong {
   color: #101828;
   font-size: 18px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.045em;
 }
 .home-list-card {
@@ -1865,7 +1866,7 @@ a { color: inherit; text-decoration: none; }
   margin: -2px auto 2px;
   border-radius: 34px;
   background: #edf4ff;
-  box-shadow: 0 18px 42px rgba(47, 107, 255, .18);
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2077,7 +2078,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 30px;
   background: #f7fbff;
   border: 1px solid #dbeafe;
-  box-shadow: 0 18px 42px rgba(47, 107, 255, .10);
+  box-shadow: none;
 }
 .main2-alert-card::after {
   content: "";
@@ -2094,7 +2095,7 @@ a { color: inherit; text-decoration: none; }
   color: #3568ef;
   font-size: 13px;
   line-height: 1;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .main2-alert-card h1 {
@@ -2102,7 +2103,7 @@ a { color: inherit; text-decoration: none; }
   color: #101828;
   font-size: 29px;
   line-height: 1.16;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 .main2-alert-card > p:not(.main2-eyebrow),
@@ -2111,7 +2112,7 @@ a { color: inherit; text-decoration: none; }
   color: #667085;
   font-size: 14px;
   line-height: 1.46;
-  font-weight: 750;
+  font-weight: 650;
   letter-spacing: -0.035em;
 }
 .main2-amount-card {
@@ -2122,12 +2123,12 @@ a { color: inherit; text-decoration: none; }
   border-radius: 24px;
   background: #fff;
   border: 1px solid rgba(219, 231, 248, .96);
-  box-shadow: 0 16px 34px rgba(31, 64, 120, .08);
+  box-shadow: none;
 }
 .main2-amount-card span {
   color: #667085;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.035em;
 }
 .main2-amount-card strong {
@@ -2138,7 +2139,7 @@ a { color: inherit; text-decoration: none; }
   color: #2458d8;
   font-size: 47px;
   line-height: .96;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.08em;
 }
 .main2-amount-card em {
@@ -2146,7 +2147,7 @@ a { color: inherit; text-decoration: none; }
   color: #2458d8;
   font-size: 18px;
   font-style: normal;
-  font-weight: 950;
+  font-weight: 700;
 }
 .main2-amount-card button,
 .main2-knowledge-card button,
@@ -2155,7 +2156,7 @@ a { color: inherit; text-decoration: none; }
   background: transparent;
   color: #3568ef;
   font-size: 13px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 .main2-amount-card button { margin-top: 14px; padding: 0; }
@@ -2187,19 +2188,19 @@ a { color: inherit; text-decoration: none; }
   background: #edf4ff;
   font-style: normal;
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 700;
 }
 .main2-benefit-chip strong {
   color: #101828;
   font-size: 11px;
   line-height: 1.25;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.05em;
 }
 .main2-benefit-chip span {
   color: #667085;
   font-size: 10px;
-  font-weight: 850;
+  font-weight: 750;
   letter-spacing: -0.035em;
 }
 .main2-knowledge-card {
@@ -2211,14 +2212,14 @@ a { color: inherit; text-decoration: none; }
   border-radius: 28px;
   background: #fff;
   border: 1px solid #dbe7f8;
-  box-shadow: 0 16px 36px rgba(31, 64, 120, .07);
+  box-shadow: none;
 }
 .main2-knowledge-card strong {
   display: block;
   color: #101828;
   font-size: 20px;
   line-height: 1.25;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.06em;
 }
 .main2-knowledge-card button { margin-top: 14px; padding: 0; }
@@ -2231,7 +2232,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   color: rgba(47, 107, 255, .34);
   font-size: 36px;
-  font-weight: 950;
+  font-weight: 700;
   background: #edf4ff;
 }
 .main2-calendar-section { display: grid; gap: 10px; }
@@ -2245,7 +2246,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
   color: #101828;
   font-size: 18px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.055em;
 }
 .main2-calendar-card {
@@ -2253,7 +2254,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 28px;
   background: #fff;
   border: 1px solid #dbe7f8;
-  box-shadow: 0 16px 36px rgba(31, 64, 120, .07);
+  box-shadow: none;
 }
 .calendar-caption {
   height: 36px;
@@ -2264,7 +2265,7 @@ a { color: inherit; text-decoration: none; }
 }
 .calendar-caption strong {
   font-size: 16px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.045em;
 }
 .calendar-caption button {
@@ -2275,7 +2276,7 @@ a { color: inherit; text-decoration: none; }
   background: #f6f9ff;
   color: #667085;
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .main2-daypicker.rdp-root {
   --rdp-accent-color: #3568ef;
@@ -2293,7 +2294,7 @@ a { color: inherit; text-decoration: none; }
 .main2-daypicker .rdp-weekday {
   color: #667085;
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .main2-daypicker .rdp-day_button {
   position: relative;
@@ -2308,7 +2309,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
   padding: 0;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 750;
 }
 .main2-daypicker .rdp-outside .rdp-day_button { color: #a3aab8; }
 .main2-daypicker .rdp-selected .rdp-day_button {
@@ -2360,13 +2361,13 @@ a { color: inherit; text-decoration: none; }
 .main2-schedule-item strong {
   color: #101828;
   font-size: 14px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.045em;
 }
 .main2-schedule-item span {
   color: #667085;
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .main2-calendar-legend {
   display: flex;
@@ -2374,7 +2375,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 12px;
   color: #667085;
   font-size: 12px;
-  font-weight: 850;
+  font-weight: 750;
 }
 .main2-calendar-legend span {
   display: inline-flex;
@@ -3148,7 +3149,7 @@ a { color: inherit; text-decoration: none; }
   background: #3568ef;
   color: #fff;
   font-size: 11.2px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.28;
   letter-spacing: -0.015em;
   text-align: center;
@@ -3161,7 +3162,7 @@ a { color: inherit; text-decoration: none; }
   background: transparent;
   color: #3568ef;
   font-size: 11.2px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1.28;
   letter-spacing: -0.015em;
 }
@@ -3450,11 +3451,11 @@ a { color: inherit; text-decoration: none; }
   --font-size-amount: 29px;
   --font-size-amount-unit: 12px;
 
-  --font-weight-regular: 600;
-  --font-weight-medium: 760;
-  --font-weight-bold: 850;
-  --font-weight-heavy: 900;
-  --font-weight-black: 950;
+  --font-weight-regular: 500;
+  --font-weight-medium: 660;
+  --font-weight-bold: 750;
+  --font-weight-heavy: 700;
+  --font-weight-black: 700;
 
   --letter-tight: -0.015em;
   --letter-title: -0.025em;
@@ -3644,7 +3645,7 @@ a { color: inherit; text-decoration: none; }
   color: #101828;
   font-size: 25px;
   line-height: 1.14;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.065em;
 }
 .screen-heading p {
@@ -3652,7 +3653,7 @@ a { color: inherit; text-decoration: none; }
   color: #667085;
   font-size: 13px;
   line-height: 1.42;
-  font-weight: 760;
+  font-weight: 660;
   letter-spacing: -0.035em;
 }
 .visual-tile {
@@ -3673,7 +3674,7 @@ a { color: inherit; text-decoration: none; }
 .card-arrow {
   color: #98a2b3;
   font-size: 22px;
-  font-weight: 900;
+  font-weight: 700;
   line-height: 1;
 }
 .blue-pill-cta,
@@ -3688,7 +3689,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 15px;
   background: #3568ef;
   color: #fff;
-  font-weight: 950;
+  font-weight: 700;
   cursor: pointer;
 }
 .outline-cta {
@@ -3718,7 +3719,7 @@ a { color: inherit; text-decoration: none; }
   color: #3568ef;
   font-size: 10.5px;
   line-height: 1;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 
@@ -3737,7 +3738,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 22px;
   background: #fff;
   border: 1px solid #dbe7f8;
-  box-shadow: 0 12px 30px rgba(31, 64, 120, .07);
+  box-shadow: none;
 }
 .tax-saving-card__visual {
   width: 62px;
@@ -3748,14 +3749,14 @@ a { color: inherit; text-decoration: none; }
   color: #101828;
   font-size: 14px;
   line-height: 1.2;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.055em;
 }
 .tax-saving-card__amount {
   color: #2458d8;
   font-size: 22px;
   line-height: 1;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.07em;
 }
 .tax-saving-card__tag {
@@ -3767,7 +3768,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   background: #f4f8ff;
   color: #667085;
-  font-weight: 900;
+  font-weight: 700;
 }
 .tax-saving-card .card-arrow {
   position: absolute;
@@ -3813,7 +3814,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 22px;
   background: #fff;
   border: 1px solid #dbe7f8;
-  box-shadow: 0 12px 30px rgba(31,64,120,.06);
+  box-shadow: none;
 }
 .chat-summary-card {
   display: grid;
@@ -3888,7 +3889,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 13px;
   color: #101828;
   font-size: 13px;
-  font-weight: 750;
+  font-weight: 650;
 }
 .chat-input-bar button {
   height: 46px;
@@ -3896,7 +3897,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 16px;
   background: #3568ef;
   color: #fff;
-  font-weight: 950;
+  font-weight: 700;
 }
 
 .policy-hero-card,
@@ -3910,7 +3911,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 24px;
   background: #f7fbff;
   border: 1px solid #dbeafe;
-  box-shadow: 0 12px 30px rgba(47,107,255,.08);
+  box-shadow: none;
 }
 .policy-hero-card__visual,
 .detail-hero-visual,
@@ -3938,7 +3939,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 12px;
   background: #fff;
   color: #667085;
-  font-weight: 900;
+  font-weight: 700;
   cursor: pointer;
 }
 .filter-chip[aria-pressed="true"],
@@ -3966,7 +3967,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 22px;
   border: 1px solid #dbe7f8;
   background: #fff;
-  box-shadow: 0 12px 30px rgba(31,64,120,.06);
+  box-shadow: none;
   text-align: left;
 }
 .policy-card__visual {
@@ -3995,7 +3996,7 @@ a { color: inherit; text-decoration: none; }
   background: #edf4ff;
   color: #3568ef;
   font-size: 12px;
-  font-weight: 950;
+  font-weight: 700;
   letter-spacing: -0.035em;
 }
 
@@ -4031,7 +4032,7 @@ a { color: inherit; text-decoration: none; }
   color: #475467;
   font-size: 12.5px;
   line-height: 1.45;
-  font-weight: 760;
+  font-weight: 660;
   letter-spacing: -0.035em;
 }
 .detail-check-list li::before {
@@ -4047,7 +4048,7 @@ a { color: inherit; text-decoration: none; }
 .detail-note {
   margin: 8px 0 0;
   color: #3568ef;
-  font-weight: 850;
+  font-weight: 750;
 }
 .field-list {
   display: grid;
@@ -4063,14 +4064,14 @@ a { color: inherit; text-decoration: none; }
 .field-row dt {
   color: #667085;
   font-size: 11px;
-  font-weight: 900;
+  font-weight: 700;
 }
 .field-row dd {
   margin: 0;
   color: #101828;
   font-size: 12.5px;
   line-height: 1.42;
-  font-weight: 820;
+  font-weight: 720;
   letter-spacing: -0.035em;
 }
 .bottom-action-card {
@@ -4105,7 +4106,7 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex;
   margin-bottom: 5px;
   color: #3568ef;
-  font-weight: 950;
+  font-weight: 700;
 }
 .notification-card p {
   margin: 0;
@@ -4119,7 +4120,7 @@ a { color: inherit; text-decoration: none; }
   display: block;
   margin-top: 5px;
   color: #667085;
-  font-weight: 800;
+  font-weight: 700;
 }
 .benefit-total-card {
   display: grid;
@@ -4146,7 +4147,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 16px;
   color: #101828;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   letter-spacing: -0.04em;
 }
 .my-menu-row.is-muted { color: #667085; }
@@ -4176,7 +4177,7 @@ a { color: inherit; text-decoration: none; }
   font-style: normal;
   font-size: 11.5px;
   line-height: 1.3;
-  font-weight: 760;
+  font-weight: 660;
   letter-spacing: -0.035em;
 }
 .ai-persona-card small {
@@ -4188,7 +4189,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   background: #edf4ff;
   color: #3568ef;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 @media (max-width: 360px) {
@@ -4206,4 +4207,239 @@ a { color: inherit; text-decoration: none; }
   .policy-card { grid-template-columns: 52px minmax(0, 1fr) auto; }
   .policy-card__visual { width: 50px; height: 50px; }
   .action-row { grid-template-columns: 1fr; }
+}
+/* Home calendar height tuning: keep full width and make the calendar grid 1.5x taller. */
+.app-shell--home .main2-daypicker.rdp-root {
+  --rdp-day_button-height: 39px;
+  --rdp-day-height: 39px;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+/* Global title size tuning: reduce major title text one step for a lighter layout. */
+.header-title {
+  font-size: 24px;
+}
+.app-shell--standard .header-title {
+  font-size: 20px;
+}
+.signup-question h1 {
+  font-size: clamp(28px, 7.6vw, 34px);
+}
+.section-heading h2 {
+  font-size: 18px;
+}
+.screen-heading h1,
+.policy-hero-card h1,
+.detail-hero-card h1,
+.my-profile-card h1 {
+  font-size: 22px;
+}
+.detail-hero-card h1,
+.policy-hero-card h1,
+.my-profile-card h1 {
+  font-size: 20px;
+}
+.app-shell .app-card .ui-alert-title {
+  font-size: 19px;
+}
+.app-shell .app-card .ui-knowledge-title,
+.app-shell .app-card .ui-section-title {
+  font-size: 13px;
+}
+.app-shell .app-card .ui-chip-title {
+  font-size: 9.8px;
+}
+.main2-alert-card h1,
+.app-shell--home .main2-alert-card h1 {
+  font-size: 19px;
+}
+.main2-knowledge-card strong {
+  font-size: 18px;
+}
+.main2-section-head h2,
+.app-shell--home .main2-section-head h2 {
+  font-size: 13px;
+}
+.tax-saving-card__title,
+.policy-card h1,
+.detail-section-card h2 {
+  font-size: 13px;
+}
+
+/* Front master pass: replace dense home calendar with a compact tax-temperature gauge. */
+.app-shell--home .main2-tax-temp-card {
+  display: grid;
+  gap: 8px;
+  border-radius: 24px;
+  background: #fff;
+  border: 1px solid #dbe7f8;
+  box-shadow: none;
+}
+.main2-tax-temp-card .main2-section-head {
+  align-items: center;
+}
+.main2-tax-gauge {
+  width: min(100%, 330px);
+  height: 145px;
+  margin: -6px auto -22px;
+  overflow: hidden;
+}
+.main2-tax-gauge .gauge-component-class {
+  width: 100%;
+}
+.main2-tax-gauge svg {
+  overflow: visible;
+}
+.main2-tax-temp-readout {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-top: -4px;
+}
+.main2-tax-temp-readout .ui-amount {
+  color: #2458d8;
+  font-size: 34px;
+  line-height: 1;
+}
+.main2-tax-temp-readout .ui-amount-unit {
+  font-size: 15px;
+  margin-left: 2px;
+}
+
+
+
+/* Tax temperature gauge refinement: smaller gauge, value below needle, original calendar cards underneath. */
+.app-shell--home .main2-tax-temp-card {
+  gap: 10px;
+}
+.main2-tax-gauge {
+  width: min(72%, 250px);
+  height: 104px;
+  margin: -2px auto 0;
+  overflow: hidden;
+}
+.main2-tax-temp-readout {
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+.main2-tax-temp-readout .ui-amount {
+  font-size: 30px;
+}
+.main2-tax-boost {
+  display: grid;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #e7edf6;
+}
+.main2-tax-boost h3 {
+  margin: 0;
+  color: #101828;
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.main2-tax-boost .main2-schedule-list {
+  margin-top: 0;
+  gap: 6px;
+}
+
+/* Gauge needle visibility fix: don't crop the lower needle/base and separate value text. */
+.main2-tax-gauge {
+  height: 122px;
+  margin: -2px auto 10px;
+  overflow: visible;
+}
+.main2-tax-gauge .gauge-component-class,
+.main2-tax-gauge svg {
+  overflow: visible;
+}
+.main2-tax-temp-readout {
+  margin-top: 0;
+  position: relative;
+  z-index: 0;
+}
+
+/* Move the temperature value down on the Y axis so it no longer intersects the needle. */
+.main2-tax-temp-readout {
+  margin-top: 18px;
+  z-index: auto;
+}
+
+/* Fine tune tax temperature value: move it slightly upward after fixing gauge clipping. */
+.main2-tax-temp-readout {
+  margin-top: 10px;
+}
+
+/* Fine tune tax temperature value: nudge it a bit more upward. */
+.main2-tax-temp-readout {
+  margin-top: 6px;
+}
+
+/* Fine tune tax temperature value: align immediately under gauge. */
+.main2-tax-temp-readout {
+  margin-top: 0;
+}
+
+/* Tax temperature feedback copy under the value. */
+.main2-tax-temp-readout {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  align-items: center;
+}
+.main2-tax-temp-readout .ui-caption {
+  color: #667085;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+/* Slightly increase tax temperature feedback copy size. */
+.main2-tax-temp-readout .ui-caption {
+  font-size: 12px;
+}
+
+/* Highlight key parts in the important alert title. */
+.main2-alert-highlight {
+  color: #3568ef;
+}
+
+/* Highlight key parts in the knowledge bite title. */
+.main2-knowledge-highlight {
+  color: #3568ef;
+}
+
+/* Make recommendation chips read as soft buttons. */
+.app-shell--home .main2-benefit-chip {
+  background: #edf4ff;
+  border: 1px solid #cfe0ff;
+  color: #2458d8;
+}
+.app-shell--home .main2-benefit-chip strong {
+  color: #1f4fd0;
+}
+.app-shell--home .main2-benefit-chip span {
+  color: #3568ef;
+}
+
+/* Use the gauge orange as the recommendation chip accent for stronger contrast. */
+.app-shell--home .main2-benefit-chip {
+  background: #fff3e8;
+  border-color: #ffd3ad;
+  color: #c85f18;
+}
+.app-shell--home .main2-benefit-chip strong {
+  color: #9f4a12;
+}
+.app-shell--home .main2-benefit-chip span {
+  color: #d96f24;
+}
+
+/* Slightly enlarge recommendation chip text. */
+.app-shell--home .main2-benefit-chip strong {
+  font-size: 10.6px;
+}
+.app-shell--home .main2-benefit-chip span {
+  font-size: 9.6px;
 }

@@ -1,8 +1,0 @@
-{
-  "pid": 73333,
-  "parent_pid": 73319,
-  "cwd": "/workspaces/alpine/han-ip",
-  "started_at": "2026-05-29T01:43:08.311Z",
-  "max_lifetime_ms": 21600000,
-  "owner_token": "73333-1780018988311-xtqpxfw7"
-}

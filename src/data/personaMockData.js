@@ -5,11 +5,16 @@ export const personaHomeData = {
   hanbeoteam: {
     source: 'mockdatas/index.md > 한버팀 시나리오 흐름',
     alert: {
-      message: '한버팀님, 올해 몰라서 놓칠 뻔한 혜택이 총 315만 원이에요!',
+      message: [
+        { text: '한버팀', highlight: true },
+        { text: '님, 놓칠 뻔한 혜택이 총 ' },
+        { text: '315만 원', highlight: true },
+        { text: '이에요!' },
+      ],
       amountLabel: '총 받을 수 있는 혜택',
       amount: '315',
       amountUnit: '만원',
-      recommendationHeading: '절세(혜택) 추천 항목 3개',
+      recommendationHeading: '추천 항목 3개',
     },
     recommendations: [
       {
@@ -40,13 +45,14 @@ export const personaHomeData = {
       detailPage: 'deduction-detail',
       source: 'mockdatas/index.md > 한버팀 > 절세추천 > 절세 추천 항목 6개',
     },
+    taxTemperature: 72,
     calendar: {
       caption: '5월',
       schedules: [
         {
           type: 'tax',
-          title: '근로·자녀장려금 정기 신청 기간 (마감일 강조)',
-          period: '5월',
+          title: '근로·자녀장려금 정기 신청',
+          period: '5월 마감',
           detailPage: 'deduction-detail',
           source: 'mockdatas/index.md > 한버팀 > 메인페이지 > 캘린더에 어떤 정책 뜰지 고민',
         },
@@ -75,11 +81,16 @@ export const personaHomeData = {
   kimgatsaeng: {
     source: 'mockdatas/index.md > 김갓생 시나리오 흐름',
     alert: {
-      message: '김갓생님, 지금 소비 습관 유지 시 예상 환급액은 145만 원이에요!',
+      message: [
+        { text: '김갓생', highlight: true },
+        { text: '님, 예상 환급액은 ' },
+        { text: '145만 원', highlight: true },
+        { text: '이에요!' },
+      ],
       amountLabel: '예상 환급액',
       amount: '145',
       amountUnit: '만원',
-      recommendationHeading: '절세(혜택) 추천 항목 3개',
+      recommendationHeading: '추천 항목 3개',
     },
     recommendations: [
       {
@@ -105,25 +116,31 @@ export const personaHomeData = {
       },
     ],
     knowledge: {
-      title: '시력보정용 안경/콘택트렌즈 구입비 의료비 세액공제',
+      title: [
+        { text: '시력보정용 ' },
+        { text: '안경/콘택트렌즈 구입비', highlight: true },
+        { text: ' 의료비 ' },
+        { text: '세액공제', highlight: true },
+      ],
       description: '연 50만 원 한도, 안경점 결제 내역 확인',
       detailPage: 'deduction-detail',
       source: 'mockdatas/index.md > 김갓생 > 절세추천 > 절세 추천 항목 6개',
     },
+    taxTemperature: 68,
     calendar: {
       caption: '10월/11월',
       schedules: [
         {
           type: 'tax',
-          title: '국세청 연말정산 미리보기 서비스 오픈일 알림',
+          title: '국세청 연말정산 미리보기 서비스 오픈',
           period: '10월/11월',
           detailPage: 'deduction-detail',
           source: 'mockdatas/index.md > 김갓생 > 메인페이지 > 캘린더에 어떤 정책 뜰지 고민',
         },
         {
           type: 'tax',
-          title: "청약저축 소득공제를 위한 '무주택확인서' 은행 제출 마감일 (12/31)",
-          period: '12월',
+          title: "청약저축 소득공제를 위한 '무주택확인서' 은행 제출",
+          period: '12/31 마감',
           detailPage: 'deduction-detail',
           source: 'mockdatas/index.md > 김갓생 > 메인페이지 > 캘린더에 어떤 정책 뜰지 고민',
         },
