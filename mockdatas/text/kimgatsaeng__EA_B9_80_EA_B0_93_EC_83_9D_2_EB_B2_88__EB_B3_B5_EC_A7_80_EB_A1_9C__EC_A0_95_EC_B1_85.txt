@@ -1,0 +1,20 @@
+# Source: /workspaces/alpine/han-ip/mockdatas/_EA_B9_80_EA_B0_93_EC_83_9D_2_EB_B2_88__EB_B3_B5_EC_A7_80_EB_A1_9C__EC_A0_95_EC_B1_85.xml
+# Persona: kimgatsaeng
+
+## Service 1
+servNm: 청년월세 지원사업
+servId: WLF00004661
+servDgst: 고금리·고물가 등으로 경제적 어려움을 겪는 청년층의 주거비 부담 경감을 위해 월 최대20만원씩 최장 24개월간 월세를 지원합니다(생애1회).
+  ※ '26년 신규 신청기간: 3.30(월) 09:00 ~ 5.29(금) 16:00까지
+jurMnofNm: 국토교통부
+jurOrgNm: 청년주거정책과
+sprtCycNm: 월
+srvPvsnNm: 현금지급
+onapPsbltYn: Y
+rprsCtadr: 1599-0001
+servDtlLink: https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004661&wlfareInfoReldBztpCd=01
+svcfrstRegTs: 20220413
+lifeArray: 청년
+intrsThemaArray: 주거
+trgterIndvdlArray: 저소득
+inqNum: 11896875

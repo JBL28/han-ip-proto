@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { AppShell } from '../../components/AppShell.jsx';
-import signupBackground from '../../assets/signup-flow-background.png';
 import analysisLogoMagnifier from '../../assets/signup/analysis-logo-magnifier.png';
 import verificationShield from '../../assets/signup/verification-shield.png';
-import { getStep, getStepIndex, signupSteps, stepPath } from '../../routes/routeConfig.js';
-import { CheckIcon, ChevronLeftIcon, Chip } from './SignupControls.jsx';
+import { getRememberedPersonaId, getStep, getStepIndex, signupSteps, stepPath } from '../../routes/routeConfig.js';
+import { CheckIcon, ChevronLeftIcon, Chip, EqualButtonGroup, SignupActionBar } from '../../components/SignupControls.jsx';
 import { formatWon, housingTypes, incomeTypes, initialSignupState, smeOptions } from './signupData.js';
 
 const storageKey = 'hanip.react.signup';
@@ -35,7 +34,7 @@ function readInitialState() {
 }
 
 export function SignupFlow() {
-  const { variant = 'a', stepId = 'cert' } = useParams();
+  const { personaId = getRememberedPersonaId(), stepId = 'cert' } = useParams();
   const navigate = useNavigate();
   const stepIndex = getStepIndex(stepId);
   const step = getStep(stepId);
@@ -56,30 +55,29 @@ export function SignupFlow() {
 
   useEffect(() => {
     if (step.id !== 'analysis') return undefined;
-    const timer = window.setTimeout(() => navigate(stepPath(variant, 'complete')), 1700);
+    const timer = window.setTimeout(() => navigate(stepPath(personaId, 'complete')), 1700);
     return () => window.clearTimeout(timer);
-  }, [navigate, step.id, variant]);
+  }, [navigate, step.id, personaId]);
 
   const update = (patch) => setForm((current) => ({ ...current, ...patch }));
 
-  if (!safeStep) return <Navigate to={stepPath(variant, 'cert')} replace />;
+  if (!safeStep) return <Navigate to={stepPath(personaId, 'cert')} replace />;
 
   function goNext(event) {
     event.preventDefault();
     if (step.id === 'complete') {
-      navigate(`/${variant}/home`);
+      navigate(`/${personaId}/home`);
       return;
     }
-    navigate(stepPath(variant, next));
+    navigate(stepPath(personaId, next));
   }
 
   return (
-    <AppShell variant={variant} page="signup" signup>
+    <AppShell personaId={personaId} page="signup" signup>
       <section className={`signup-page signup-page--${step.id}`}>
-        <img className="signup-bg-image" src={signupBackground} alt="" aria-hidden="true" />
         {!isAnalysis && !isComplete && (
           <header className="signup-topbar" aria-label="회원가입 진행률">
-            <Link className="signup-back-link" to={stepPath(variant, previous)} aria-disabled={isFirst ? 'true' : undefined}><ChevronLeftIcon /></Link>
+            <Link className="signup-back-link" to={stepPath(personaId, previous)} aria-disabled={isFirst ? 'true' : undefined}><ChevronLeftIcon /></Link>
             <strong>회원가입</strong>
             <span aria-hidden="true" />
             <div className="signup-progress-track" aria-hidden="true"><span style={{ width: `${inputProgress}%` }} /></div>
@@ -98,10 +96,11 @@ export function SignupFlow() {
         </section>
 
         {!isAnalysis && (
-          <footer className={`signup-bottom-actions${isComplete ? ' signup-bottom-actions--single' : ''}`}>
-            {!isComplete && <Link className="secondary-action" to={stepPath(variant, previous)} aria-disabled={isFirst ? 'true' : undefined}>이전</Link>}
-            <Link className="primary-action" to={isComplete ? `/${variant}/home` : stepPath(variant, next)} onClick={goNext}>{step.cta}</Link>
-          </footer>
+          <SignupActionBar
+            single={isComplete}
+            secondary={!isComplete ? { as: Link, to: stepPath(personaId, previous), 'aria-disabled': isFirst ? 'true' : undefined, children: '이전' } : undefined}
+            primary={{ as: Link, to: isComplete ? `/${personaId}/home` : stepPath(personaId, next), onClick: goNext, children: step.cta }}
+          />
         )}
       </section>
     </AppShell>
@@ -134,10 +133,13 @@ function CertStep({ form, update }) {
           <li>월세 등 주거정보</li>
         </ul>
       </article>
-      <div className="auth-choice-row" role="group" aria-label="간편 인증 방식">
-        <button className={`auth-choice${form.authMethod === 'kakao' ? ' is-selected' : ''}`} type="button" onClick={() => update({ authMethod: 'kakao' })}>카카오 인증</button>
-        <button className={`auth-choice${form.authMethod === 'pass' ? ' is-selected' : ''}`} type="button" onClick={() => update({ authMethod: 'pass' })}>PASS 인증</button>
-      </div>
+      <EqualButtonGroup
+        label="간편 인증 방식"
+        options={[
+          { value: 'kakao', label: '카카오 인증', selected: form.authMethod === 'kakao', onClick: () => update({ authMethod: 'kakao' }) },
+          { value: 'pass', label: 'PASS 인증', selected: form.authMethod === 'pass', onClick: () => update({ authMethod: 'pass' }) },
+        ]}
+      />
       <p className="signup-footnote">나중에 직접 입력할 수도 있어요</p>
     </div>
   );

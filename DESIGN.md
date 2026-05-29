@@ -14,13 +14,13 @@
 ## Brand
 - Personality: 단순함, 신뢰감, 차분함, 금융/세금 맥락에 맞는 명료함
 - Trust signals: 여백, 짧은 문장, 선명한 정보 위계, 안정적인 파란 포인트 컬러
-- Avoid: 장식적 그래픽, 과도한 카드/배지, 요구사항에 없는 메뉴/위젯/광고/통계 요소
-- Hard UI ban: 사용자 화면에 `A안`, `B안`, `C안`, `n안`, `절제된 금융 앱`, `정보 카드형 앱`, `AI 비서형 앱` 같은 내부 variant 설명 라벨을 노출하지 않는다. Variant는 라우트/테마 내부 식별자일 뿐 사용자용 콘텐츠가 아니다.
+- Avoid: 장식적 그래픽, 과도한 카드/배지, 요구사항에 없는 메뉴/위젯/광고/통계 요소, 그라데이션
+- Routing/content rule: 사용자 화면과 라우트는 페르소나(`hanbeoteam`, `kimgatsaeng`) 기준으로 구성한다. 이전 디자인 실험 라우트와 내부 실험 라벨은 사용하지 않는다.
 
 ## Product goals
 - Goals:
   - 한버팀/김갓생 시나리오를 바탕으로 세금, 공제, 정책, 챗봇 경험을 앱처럼 쾌적하게 탐색하게 한다.
-  - 페이지별 A/B/C 디자인 버전을 만들어 피드백 기반으로 점진 확정한다.
+  - 한버팀/김갓생 페르소나를 선택하고, 선택 상태를 기억한 뒤 같은 앱 화면 흐름을 탐색하게 한다.
   - 로직 정합성보다 화면 완성도, 흐름, 인터랙션 감각을 우선한다.
   - 추후 백엔드 연동을 가정한 mock API 계약을 남긴다.
 - Non-goals:
@@ -67,6 +67,7 @@
 ## Visual language
 - Color:
   - Background: #FFFFFF
+  - Gradient: 금지. 배경, 카드, CTA, 장식 요소, 진행 표시에는 단색만 사용한다.
   - Text primary: 짙은 네이비/그레이 계열
   - Accent: 신뢰감 있는 블루 계열
   - Border/surface: 매우 옅은 블루/그레이
@@ -91,7 +92,7 @@
   - PolicyCard
   - NotificationItem
   - SelectableCard
-- Variants and states:
+- States:
   - selected/unselected
   - pressed/focused
   - loading mock state if API mock boundary를 보여줘야 할 때만
@@ -125,10 +126,13 @@
 - Microcopy rules: 질문형 버튼명보다 행동형 문구 사용, 사용자가 해야 할 일을 명확히 표현
 
 ## Implementation constraints
-- Pre-implementation ritual: 모든 페이지 구현 전 `docs/korean-mobile-app-layout-research.md`의 핵심 원칙과 해당 페이지 요구사항(`설계문서.md`, `wireframes/`, `.omx/plans/abc-page-design-plan.md`)을 먼저 확인하고, 구현 선택이 원칙과 충돌하면 문서/계획을 보정한 뒤 진행한다. 특히 (1) 사용자 화면에 variant 내부 라벨을 노출하지 않는지, (2) mock 범위라도 UI 상호작용이 실제로 작동하는지 먼저 확인한다.
-- Framework/styling system: 현재 구현은 정적 HTML/CSS/ES module 구조(`src/app.js`, `src/renderers/pages.js`, `src/styles/global.css`)를 기준으로 유지한다. 신규 프레임워크 전환은 별도 결정 없이는 하지 않는다.
-- Design-token constraints: CSS variables 또는 theme object로 최소 토큰 유지
-- Variant constraints: A/B/C는 `[data-theme="a"|"b"|"c"]` 단위로 margin, color, font, radius, motion을 공유
+- Pre-implementation ritual: 모든 페이지 구현 전 `docs/korean-mobile-app-layout-research.md`의 핵심 원칙과 해당 페이지 요구사항(`설계문서.md`, `wireframes/`)을 먼저 확인하고, 구현 선택이 원칙과 충돌하면 문서/계획을 보정한 뒤 진행한다. 특히 (1) 페르소나 라우팅/저장 상태가 유지되는지, (2) mock 범위라도 UI 상호작용이 실제로 작동하는지 먼저 확인한다.
+- Framework/styling system: 현재 구현은 React/Vite 구조(`src/main.jsx`, `src/routes/`, `src/features/`, `src/styles/global.css`)를 기준으로 유지한다. 신규 프레임워크 전환은 별도 결정 없이는 하지 않는다.
+- Design-token constraints: CSS variables로 최소 토큰 유지
+- Gradient constraints: 그라데이션은 금지한다. `linear-gradient`, `radial-gradient`, `conic-gradient` 및 그라데이션 이미지/배경을 새로 추가하지 않는다.
+- Persona routing constraints: 라우트 prefix는 `/:personaId/...` 형식이며 유효 페르소나는 `hanbeoteam`, `kimgatsaeng`이다. 선택한 페르소나는 브라우저 저장소에 기억하고, `/home`, `/signup` 같은 축약 경로는 기억된 페르소나로 이동한다.
+- Mock data constraints: 페르소나별 금액, 추천 정책/공제명, 설명, 일정 문구는 `mockdatas/` 원본과 `mockdatas/text/` 변환본을 기준으로만 사용한다. 임의 금액/혜택명/설명/일정은 추가하지 않는다.
+- Component placement constraints: 새로 만드는 재사용 UI 컴포넌트는 기본적으로 `src/components/`에 생성한다. feature 폴더에는 화면/page와 해당 feature 전용 데이터·상태 로직만 둔다.
 - Performance constraints: 첫 렌더가 가벼워야 하며 이미지/외부 의존 최소화
 - Compatibility constraints: 모바일 브라우저 앱뷰 크기 기준
 - Test/screenshot expectations: 앱뷰 홈/상세, 선택 상태, reduced motion, API mock contract 확인

@@ -7,15 +7,7 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --font-sans: "Pretendard";
   --brand-blue: #3f73f6;
-  --motion-fast: 140ms;
-  --motion-base: 220ms;
-}
-
-[data-theme="a"], [data-theme="b"], [data-theme="c"] {
   --accent: var(--brand-blue);
-}
-
-[data-theme="a"] {
   --bg: #ffffff;
   --surface: #ffffff;
   --surface-soft: #f4f8ff;
@@ -24,29 +16,13 @@
   --line: #e7edf6;
   --accent-soft: #eaf2ff;
   --page-x: 20px;
+  --motion-fast: 140ms;
+  --motion-base: 220ms;
 }
 
-[data-theme="b"] {
-  --bg: #f6f9ff;
-  --surface: #ffffff;
-  --surface-soft: #edf4ff;
-  --text: #0f172a;
-  --muted: #64748b;
-  --line: #dbe7f8;
-  --accent-soft: #dceaff;
-  --page-x: 16px;
-}
 
-[data-theme="c"] {
-  --bg: #ffffff;
-  --surface: #ffffff;
-  --surface-soft: #f1f5ff;
-  --text: #111827;
-  --muted: #6b7280;
-  --line: #e1e8ff;
-  --accent-soft: #eef2ff;
-  --page-x: 18px;
-}
+
+
 
 * { box-sizing: border-box; font-family: var(--font-sans) !important; }
 html, body { min-height: 100%; }
@@ -252,24 +228,8 @@ a { color: inherit; text-decoration: none; }
   --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
 }
 
-[data-theme="a"] {
-  --radius-card: 24px;
-  --radius-control: 16px;
-  --shadow-card: 0 12px 30px rgba(15, 23, 42, 0.06);
-}
 
-[data-theme="b"] {
-  --radius-card: 18px;
-  --radius-control: 14px;
-  --shadow-card: 0 10px 0 rgba(29, 78, 216, 0.04), 0 1px 0 rgba(15, 23, 42, 0.04);
-}
 
-[data-theme="c"] {
-  --accent: #4f46e5;
-  --radius-card: 28px;
-  --radius-control: 22px;
-  --shadow-card: 0 16px 34px rgba(79, 70, 229, 0.10);
-}
 
 .app-shell {
   display: flex;
@@ -397,14 +357,7 @@ a { color: inherit; text-decoration: none; }
   box-shadow: var(--shadow-card);
 }
 
-[data-theme="b"] .step-card {
-  border-width: 1.5px;
-  box-shadow: none;
-}
 
-[data-theme="c"] .step-card {
-  background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%);
-}
 
 .section-heading {
   display: grid;
@@ -671,7 +624,7 @@ a { color: inherit; text-decoration: none; }
   width: min(100%, var(--app-max-width));
   transform: translateX(-50%);
   padding: 12px var(--page-x) 10px;
-  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 90%, transparent) 16%, var(--bg) 52%);
+  background: var(--bg);
   pointer-events: none;
 }
 .primary-action {
@@ -690,30 +643,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px;
 }
 
-[data-theme="b"] .screen-badge,
-[data-theme="b"] .progress-dot,
-[data-theme="b"] .step-number,
-[data-theme="b"] .counter-control {
-  border-radius: 14px;
-}
 
-[data-theme="c"] .signup-hero h1::after {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-left: 5px;
-  border-radius: 999px;
-  background: var(--accent);
-}
-[data-theme="c"] .single-card,
-[data-theme="c"] .choice-chip,
-[data-theme="c"] .mini-pill,
-[data-theme="c"] .mock-field,
-[data-theme="c"] .yes-no-row,
-[data-theme="c"] .counter-card {
-  border-color: #dfe6ff;
-}
 
 @media (max-width: 360px) {
   .header-logo { width: 48px; height: 48px; }
@@ -733,9 +663,6 @@ a { color: inherit; text-decoration: none; }
   --shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
 }
 
-[data-theme="a"] { --radius-card: 24px; --radius-control: 16px; }
-[data-theme="b"] { --radius-card: 18px; --radius-control: 14px; }
-[data-theme="c"] { --accent: #4f46e5; --radius-card: 28px; --radius-control: 22px; }
 
 .app-shell {
   display: flex;
@@ -915,20 +842,6 @@ a { color: inherit; text-decoration: none; }
   background: var(--surface);
   box-shadow: var(--shadow-card);
 }
-[data-theme="b"] .choice-card,
-[data-theme="b"] .counter-card,
-[data-theme="b"] .field-card,
-[data-theme="b"] .info-panel,
-[data-theme="b"] .yes-no-row,
-[data-theme="b"] .age-control,
-[data-theme="b"] .review-list li { box-shadow: none; border-width: 1.5px; }
-[data-theme="c"] .choice-card,
-[data-theme="c"] .counter-card,
-[data-theme="c"] .field-card,
-[data-theme="c"] .info-panel,
-[data-theme="c"] .yes-no-row,
-[data-theme="c"] .age-control,
-[data-theme="c"] .review-list li { background: linear-gradient(180deg, var(--surface) 0%, var(--surface-soft) 100%); }
 
 .choice-card {
   min-height: 82px;
@@ -1179,7 +1092,7 @@ a { color: inherit; text-decoration: none; }
   gap: 10px;
   transform: translateX(-50%);
   padding: 14px var(--page-x) 12px;
-  background: linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--bg) 92%, transparent) 18%, var(--bg) 56%);
+  background: var(--bg);
 }
 .primary-action,
 .secondary-action {
@@ -1242,7 +1155,7 @@ a { color: inherit; text-decoration: none; }
   background: transparent;
 }
 
-/* React parity fixes: index variant picker and progress header placement. */
+/* React parity fixes: persona picker and progress header placement. */
 .app-shell--index {
   justify-content: center;
   padding-bottom: var(--safe-bottom);
@@ -1275,6 +1188,54 @@ a { color: inherit; text-decoration: none; }
   display: grid;
   gap: 10px;
   margin-top: 8px;
+}
+
+.persona-grid {
+  display: grid;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.persona-card {
+  min-height: 104px;
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
+  transition: transform var(--motion-fast), border-color var(--motion-base), background var(--motion-base);
+}
+.persona-card:active { transform: scale(.99); }
+.persona-card.is-selected {
+  border-color: color-mix(in srgb, var(--accent) 68%, var(--line));
+  background: color-mix(in srgb, var(--accent-soft) 74%, #fff);
+}
+.persona-card span {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: -0.035em;
+}
+.persona-card strong {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.34;
+  font-weight: 900;
+  letter-spacing: -0.045em;
+}
+.persona-card em {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.42;
+  font-style: normal;
+  font-weight: 760;
+  letter-spacing: -0.03em;
+}
+
+.persona-select-page {
+  justify-content: flex-start;
 }
 
 .button {
@@ -1333,8 +1294,8 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url("../assets/signup-flow-background.png") top center / cover no-repeat;
-  opacity: .42;
+  background: #fff;
+  opacity: 0;
 }
 
 .signup-page::after {
@@ -1342,7 +1303,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: linear-gradient(180deg, rgba(255,255,255,.72) 0%, rgba(255,255,255,.94) 34%, #fff 72%);
+  background: #fff;
 }
 
 .signup-topbar {
@@ -1689,7 +1650,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: conic-gradient(#4f7cff 0 75%, #e8eef8 75% 100%);
+  background: #4f7cff;
   box-shadow: 0 20px 42px rgba(53,104,239,.20);
 }
 .analysis-orb span {
@@ -1752,7 +1713,7 @@ a { color: inherit; text-decoration: none; }
 .app-shell--signup .signup-bottom-actions {
   bottom: 0;
   padding-bottom: calc(12px + var(--safe-bottom));
-  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.94) 22%, #fff 58%);
+  background: #fff;
 }
 .signup-bottom-actions--single { grid-template-columns: 1fr; }
 
@@ -1824,7 +1785,7 @@ a { color: inherit; text-decoration: none; }
   gap: 12px;
 }
 
-/* Signup visual polish pass: smaller typography and explicit generated background image. */
+/* Signup visual polish pass: smaller typography and solid background. */
 .signup-bg-image {
   position: absolute;
   inset: -16px 0 auto 0;
@@ -1833,13 +1794,14 @@ a { color: inherit; text-decoration: none; }
   height: 330px;
   object-fit: cover;
   object-position: top center;
-  opacity: .58;
+  display: none;
+  opacity: 0;
   pointer-events: none;
   user-select: none;
 }
 .signup-page::before { opacity: 0; }
 .signup-page::after {
-  background: linear-gradient(180deg, rgba(255,255,255,.34) 0%, rgba(255,255,255,.74) 24%, rgba(255,255,255,.96) 49%, #fff 76%);
+  background: #fff;
 }
 .signup-question h1 {
   font-size: 22px;
@@ -1902,7 +1864,7 @@ a { color: inherit; text-decoration: none; }
   height: 118px;
   margin: -2px auto 2px;
   border-radius: 34px;
-  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(237,244,255,.82));
+  background: #edf4ff;
   box-shadow: 0 18px 42px rgba(47, 107, 255, .18);
   display: flex;
   align-items: center;
@@ -2113,7 +2075,7 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   padding: 20px;
   border-radius: 30px;
-  background: linear-gradient(142deg, #eef5ff 0%, #ffffff 48%, #f7fbff 100%);
+  background: #f7fbff;
   border: 1px solid #dbeafe;
   box-shadow: 0 18px 42px rgba(47, 107, 255, .10);
 }
@@ -2125,7 +2087,7 @@ a { color: inherit; text-decoration: none; }
   width: 168px;
   height: 168px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(47,107,255,.16), rgba(47,107,255,0) 68%);
+  background: #edf4ff;
 }
 .main2-eyebrow {
   margin: 0 0 10px;
@@ -2270,7 +2232,7 @@ a { color: inherit; text-decoration: none; }
   color: rgba(47, 107, 255, .34);
   font-size: 36px;
   font-weight: 950;
-  background: radial-gradient(circle at 34% 28%, #fff 0%, #edf4ff 48%, #dceaff 100%);
+  background: #edf4ff;
 }
 .main2-calendar-section { display: grid; gap: 10px; }
 .main2-section-head {
@@ -2335,7 +2297,16 @@ a { color: inherit; text-decoration: none; }
 }
 .main2-daypicker .rdp-day_button {
   position: relative;
+  width: var(--rdp-day_button-width);
+  height: var(--rdp-day_button-height);
+  border: 0;
+  border-radius: var(--rdp-day_button-border-radius);
+  background: transparent;
   color: #101828;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
   font-size: 13px;
   font-weight: 850;
 }
@@ -2918,4 +2889,737 @@ a { color: inherit; text-decoration: none; }
   max-width: 104px;
   text-align: right;
   line-height: 1.28;
+}
+
+/* Main page breathing room: increase vertical rhythm and text line spacing. */
+.app-shell--home .main2-page {
+  gap: 12px;
+}
+.app-shell--home .main2-alert-card {
+  padding: 15px;
+}
+.app-shell--home .main2-eyebrow {
+  margin-bottom: 8px;
+}
+.app-shell--home .main2-alert-card h1 {
+  line-height: 1.22;
+}
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow),
+.app-shell--home .main2-knowledge-card p {
+  margin-top: 8px;
+  line-height: 1.5;
+}
+.app-shell--home .main2-amount-card {
+  margin-top: 12px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.app-shell--home .main2-amount-card strong {
+  margin-top: 5px;
+  line-height: 1.08;
+}
+.app-shell--home .main2-benefit-row {
+  margin-top: 11px;
+  gap: 7px;
+}
+.app-shell--home .main2-benefit-chip {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  row-gap: 4px;
+}
+.app-shell--home .main2-knowledge-card {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.app-shell--home .main2-knowledge-card strong {
+  line-height: 1.28;
+}
+.app-shell--home .main2-calendar-section {
+  gap: 10px;
+}
+.app-shell--home .main2-calendar-card {
+  padding-top: 11px;
+  padding-bottom: 12px;
+}
+.app-shell--home .main2-schedule-list {
+  gap: 6px;
+  margin-top: 7px;
+}
+.app-shell--home .main2-schedule-item {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+/* Main page typography breathing room: loosen tight Korean text spacing. */
+.app-shell--home .main2-eyebrow,
+.app-shell--home .main2-alert-card h1,
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow),
+.app-shell--home .main2-amount-card span,
+.app-shell--home .main2-amount-card strong,
+.app-shell--home .main2-amount-card em,
+.app-shell--home .main2-amount-card button,
+.app-shell--home .main2-benefit-chip strong,
+.app-shell--home .main2-benefit-chip span,
+.app-shell--home .main2-knowledge-card strong,
+.app-shell--home .main2-knowledge-card p,
+.app-shell--home .main2-knowledge-card button,
+.app-shell--home .main2-section-head h2,
+.app-shell--home .main2-section-head button,
+.app-shell--home .main2-schedule-item strong,
+.app-shell--home .main2-schedule-item span,
+.app-shell--home .main2-calendar-legend,
+.app-shell--home .bottom-nav-link {
+  letter-spacing: -0.015em;
+}
+.app-shell--home .main2-alert-card h1 {
+  letter-spacing: -0.025em;
+  line-height: 1.26;
+}
+.app-shell--home .main2-amount-card strong {
+  letter-spacing: -0.035em;
+}
+.app-shell--home .main2-knowledge-card strong {
+  letter-spacing: -0.02em;
+  line-height: 1.34;
+}
+.app-shell--home .main2-benefit-chip strong {
+  line-height: 1.28;
+}
+.app-shell--home .main2-benefit-chip span,
+.app-shell--home .main2-schedule-item span {
+  line-height: 1.32;
+}
+.app-shell--home .bottom-nav-link {
+  letter-spacing: -0.01em;
+}
+
+/* Main page raw transparent illustrations: no frame, no shadow, no generated box. */
+.app-shell--home .main2-alert-card::after {
+  display: none;
+}
+.app-shell--home .main2-alert-visual,
+.app-shell--home .knowledge-visual {
+  display: block;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+.app-shell--home .main2-alert-visual {
+  position: absolute;
+  right: 8px;
+  top: 12px;
+  z-index: 0;
+  width: 88px;
+  height: 88px;
+}
+.app-shell--home .main2-alert-card .main2-eyebrow,
+.app-shell--home .main2-alert-card h1,
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow) {
+  position: relative;
+  z-index: 1;
+  max-width: 246px;
+}
+.app-shell--home .knowledge-visual {
+  width: 76px;
+  height: 76px;
+  justify-self: end;
+  align-self: center;
+  color: transparent;
+  font-size: 0;
+}
+@media (max-width: 360px) {
+  .app-shell--home .main2-alert-visual {
+    width: 76px;
+    height: 76px;
+  }
+  .app-shell--home .knowledge-visual {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* Main page transparent illustration scale: requested 2x size. */
+.app-shell--home .main2-alert-visual {
+  width: 176px;
+  height: 176px;
+  right: -26px;
+  top: -12px;
+}
+.app-shell--home .knowledge-visual {
+  width: 152px;
+  height: 152px;
+  margin-right: -24px;
+}
+@media (max-width: 360px) {
+  .app-shell--home .main2-alert-visual {
+    width: 152px;
+    height: 152px;
+    right: -30px;
+    top: -8px;
+  }
+  .app-shell--home .knowledge-visual {
+    width: 128px;
+    height: 128px;
+    margin-right: -22px;
+  }
+}
+
+/* Main page illustrations must not affect text/grid layout. */
+.app-shell--home .main2-alert-card,
+.app-shell--home .main2-knowledge-card {
+  position: relative;
+}
+.app-shell--home .main2-alert-visual,
+.app-shell--home .knowledge-visual {
+  position: absolute;
+  z-index: 0;
+  flex: none;
+  grid-area: auto;
+  max-width: none;
+}
+.app-shell--home .main2-alert-card .main2-eyebrow,
+.app-shell--home .main2-alert-card h1,
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow),
+.app-shell--home .main2-knowledge-card > div:first-child {
+  position: relative;
+  z-index: 1;
+  max-width: none;
+}
+.app-shell--home .main2-knowledge-card {
+  grid-template-columns: 1fr;
+}
+.app-shell--home .main2-alert-visual {
+  right: -42px;
+  top: -28px;
+}
+.app-shell--home .knowledge-visual {
+  right: -34px;
+  top: 50%;
+  margin: 0;
+  transform: translateY(-50%);
+}
+@media (max-width: 360px) {
+  .app-shell--home .knowledge-visual {
+    display: block;
+    right: -34px;
+    top: 50%;
+    margin: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* Main page illustration position tweak: move both images 30px left. */
+.app-shell--home .main2-alert-visual {
+  right: -12px;
+}
+.app-shell--home .knowledge-visual {
+  right: -4px;
+}
+@media (max-width: 360px) {
+  .app-shell--home .main2-alert-visual {
+    right: 0;
+  }
+  .app-shell--home .knowledge-visual {
+    right: -4px;
+  }
+}
+
+/* Main page wallet/bell position tweak: move 5px down. */
+.app-shell--home .main2-alert-visual {
+  top: -23px;
+}
+@media (max-width: 360px) {
+  .app-shell--home .main2-alert-visual {
+    top: -3px;
+  }
+}
+
+/* Main page link behavior: only the primary application CTA is a blue rounded button. */
+.main2-primary-cta {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 13px;
+  border-radius: 999px;
+  background: #3568ef;
+  color: #fff;
+  font-size: 11.2px;
+  font-weight: 900;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  text-align: center;
+}
+.main2-text-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 5px;
+  border: 0;
+  background: transparent;
+  color: #3568ef;
+  font-size: 11.2px;
+  font-weight: 900;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+}
+.main2-benefit-chip,
+.main2-schedule-item {
+  color: inherit;
+  text-decoration: none;
+}
+.main2-benefit-chip:active,
+.main2-schedule-item:active,
+.main2-primary-cta:active,
+.main2-text-link:active {
+  transform: scale(.98);
+}
+.app-shell--home .main2-amount-card button,
+.app-shell--home .main2-knowledge-card button {
+  display: none;
+}
+.app-shell--home .main2-amount-card .main2-primary-cta {
+  grid-area: cta;
+  margin-top: 0;
+  max-width: 104px;
+}
+.app-shell--home .main2-knowledge-card .main2-text-link {
+  margin-top: 5px;
+}
+
+/* Main page primary CTA: keep label on one line. */
+.app-shell--home .main2-amount-card .main2-primary-cta {
+  max-width: none;
+  white-space: nowrap;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* Main page primary CTA: slightly reduce vertical size. */
+.app-shell--home .main2-amount-card .main2-primary-cta {
+  min-height: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Main page dynamic mockdata cards: allow source titles/descriptions to wrap naturally. */
+.app-shell--home .main2-benefit-chip {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  align-items: start;
+  min-height: 64px;
+}
+.app-shell--home .main2-benefit-chip strong,
+.app-shell--home .main2-benefit-chip span {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+.app-shell--home .main2-benefit-chip strong {
+  line-height: 1.22;
+}
+.app-shell--home .main2-benefit-chip span {
+  line-height: 1.28;
+}
+
+/* Main page dynamic text overflow guard: keep source text readable without colliding with absolute illustrations. */
+.app-shell--home .main2-alert-card h1 {
+  max-width: min(232px, calc(100% - 116px));
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+.app-shell--home .main2-alert-card > p:not(.main2-eyebrow) {
+  max-width: min(232px, calc(100% - 116px));
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.app-shell--home .main2-knowledge-card > div:first-child {
+  max-width: calc(100% - 124px);
+}
+.app-shell--home .main2-knowledge-card strong {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+.app-shell--home .main2-knowledge-card p {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* Main page recommendation buttons: compact dynamic mockdata with ellipsis under the amount card. */
+.app-shell--home .main2-benefit-chip {
+  min-height: 54px;
+  overflow: hidden;
+}
+.app-shell--home .main2-benefit-chip strong,
+.app-shell--home .main2-benefit-chip span {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Main/signup margin polish plan:
+   - Home: restore a comfortable 16px app gutter and 14px card rhythm after compact passes.
+   - Signup: keep form pages readable by reserving footer space and using consistent 16px stack gaps.
+   - Scope only spacing; do not alter mock data, routes, colors, gradients, or illustration placement. */
+.app-shell--home {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: calc(88px + var(--safe-bottom));
+}
+.app-shell--home .app-header {
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.app-shell--home .app-content {
+  padding-top: 10px;
+  padding-bottom: 16px;
+}
+.app-shell--home .main2-page {
+  gap: 14px;
+}
+.app-shell--home .main2-alert-card,
+.app-shell--home .main2-knowledge-card {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.app-shell--home .main2-amount-card {
+  margin-top: 13px;
+}
+.app-shell--home .main2-benefit-row {
+  margin-top: 12px;
+}
+.app-shell--home .main2-calendar-section {
+  gap: 11px;
+}
+.app-shell--home .main2-calendar-card {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.app-shell--home .calendar-caption,
+.app-shell--home .main2-schedule-list,
+.app-shell--home .main2-calendar-legend {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.app-shell--signup {
+  --page-x: 22px;
+}
+.app-shell--signup .app-content--signup {
+  padding-bottom: 0;
+}
+.app-shell--signup .signup-page {
+  padding-left: var(--page-x);
+  padding-right: var(--page-x);
+  padding-bottom: calc(118px + var(--safe-bottom));
+}
+.app-shell--signup .signup-topbar {
+  margin-bottom: 20px;
+}
+.app-shell--signup .signup-question {
+  gap: 14px;
+  padding-top: 4px;
+}
+.app-shell--signup .signup-lead {
+  margin-top: 14px;
+  gap: 8px;
+}
+.app-shell--signup .signup-stack {
+  gap: 16px;
+  margin-top: 18px;
+}
+.app-shell--signup .connection-card,
+.app-shell--signup .form-section,
+.app-shell--signup .benefit-summary-card,
+.app-shell--signup .analysis-panel {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.app-shell--signup .form-section + .form-section {
+  margin-top: 0;
+}
+.app-shell--signup .signup-bottom-actions {
+  padding: 12px var(--page-x) calc(14px + var(--safe-bottom));
+}
+.app-shell--signup .signup-page--analysis,
+.app-shell--signup .signup-page--complete {
+  padding-bottom: calc(42px + var(--safe-bottom));
+}
+
+/* Main page benefit recommendation spacing reset: keep the amount card and 3 recommendation cards visually grouped. */
+.app-shell--home .main2-amount-card {
+  margin-bottom: 0;
+}
+.app-shell--home .main2-benefit-row {
+  margin-top: 9px;
+  gap: 6px;
+}
+.app-shell--home .main2-benefit-chip {
+  min-height: 50px;
+  padding: 7px 8px;
+  align-content: center;
+  row-gap: 3px;
+}
+
+/* Reusable card baseline and home outer spacing normalization. */
+.app-card {
+  margin: 0;
+}
+.app-shell--home .main2-page {
+  gap: 14px;
+}
+.app-shell--home .main2-alert-card,
+.app-shell--home .main2-knowledge-card,
+.app-shell--home .main2-calendar-card {
+  width: 100%;
+  margin: 0;
+}
+.app-shell--home .main2-calendar-section.main2-calendar-card {
+  display: grid;
+  gap: 11px;
+}
+
+/* AppCard owns home card padding: child card classes/inner calendar rows must not fake outer spacing. */
+.app-shell--home .app-card {
+  --app-card-padding: 16px;
+  width: 100%;
+  margin: 0;
+  padding: var(--app-card-padding);
+}
+.app-shell--home .main2-alert-card,
+.app-shell--home .main2-knowledge-card,
+.app-shell--home .main2-calendar-card {
+  margin: 0;
+  padding: var(--app-card-padding);
+}
+.app-shell--home .main2-calendar-section.main2-calendar-card {
+  display: grid;
+  gap: 11px;
+}
+.app-shell--home .calendar-caption,
+.app-shell--home .main2-schedule-list,
+.app-shell--home .main2-calendar-legend {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Knowledge card margin fix: keep AppCard padding unified; remove only the inner text margins that made this card feel taller. */
+.app-shell--home .main2-knowledge-card > div:first-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+.app-shell--home .main2-knowledge-card .main2-eyebrow,
+.app-shell--home .main2-knowledge-card strong,
+.app-shell--home .main2-knowledge-card p,
+.app-shell--home .main2-knowledge-card .main2-text-link {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Global typography/color tags. Use these classes for text styling instead of per-element font rules. */
+:root {
+  --color-text-strong: #101828;
+  --color-text-body: #667085;
+  --color-text-muted: #7b8494;
+  --color-text-accent: #3568ef;
+  --color-text-action: #3568ef;
+  --color-text-action-inverse: #ffffff;
+  --color-text-amount: #2458d8;
+
+  --font-size-eyebrow: 11px;
+  --font-size-alert-title: 21px;
+  --font-size-knowledge-title: 14px;
+  --font-size-section-title: 14px;
+  --font-size-body-sm: 11.8px;
+  --font-size-label-sm: 13px;
+  --font-size-action-sm: 11.2px;
+  --font-size-chip-title: 10.5px;
+  --font-size-chip-caption: 9.8px;
+  --font-size-caption: 10.4px;
+  --font-size-amount: 29px;
+  --font-size-amount-unit: 12px;
+
+  --font-weight-regular: 600;
+  --font-weight-medium: 760;
+  --font-weight-bold: 850;
+  --font-weight-heavy: 900;
+  --font-weight-black: 950;
+
+  --letter-tight: -0.015em;
+  --letter-title: -0.025em;
+  --letter-amount: -0.035em;
+}
+.ui-eyebrow,
+.ui-alert-title,
+.ui-knowledge-title,
+.ui-section-title,
+.ui-body-muted,
+.ui-label-sm,
+.ui-action,
+.ui-chip-title,
+.ui-chip-caption,
+.ui-caption,
+.ui-calendar-caption,
+.ui-list-title,
+.ui-amount,
+.ui-amount-unit {
+  margin: 0;
+  font-family: var(--font-sans);
+  letter-spacing: var(--letter-tight);
+}
+.app-shell .app-card .ui-eyebrow {
+  color: var(--color-text-accent);
+  font-size: var(--font-size-eyebrow);
+  line-height: 1;
+  font-weight: var(--font-weight-black);
+}
+.app-shell .app-card .ui-alert-title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-alert-title);
+  line-height: 1.26;
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--letter-title);
+}
+.app-shell .app-card .ui-knowledge-title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-knowledge-title);
+  line-height: 1.34;
+  font-weight: var(--font-weight-black);
+  letter-spacing: -0.02em;
+}
+.app-shell .app-card .ui-section-title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-section-title);
+  line-height: 1.2;
+  font-weight: var(--font-weight-black);
+}
+.app-shell .app-card .ui-body-muted {
+  color: var(--color-text-body);
+  font-size: var(--font-size-body-sm);
+  line-height: 1.5;
+  font-weight: var(--font-weight-medium);
+}
+.app-shell .app-card .ui-label-sm {
+  color: var(--color-text-body);
+  font-size: var(--font-size-label-sm);
+  line-height: 1.2;
+  font-weight: var(--font-weight-bold);
+}
+.app-shell .app-card .ui-action {
+  font-size: var(--font-size-action-sm);
+  line-height: 1.28;
+  font-weight: var(--font-weight-heavy);
+}
+.app-shell .app-card .ui-chip-title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-chip-title);
+  line-height: 1.22;
+  font-weight: var(--font-weight-black);
+}
+.app-shell .app-card .ui-chip-caption {
+  color: var(--color-text-body);
+  font-size: var(--font-size-chip-caption);
+  line-height: 1.28;
+  font-weight: var(--font-weight-bold);
+}
+.app-shell .app-card .ui-list-title {
+  color: var(--color-text-strong);
+  font-size: var(--font-size-body-sm);
+  line-height: 1.24;
+  font-weight: var(--font-weight-heavy);
+}
+.app-shell .app-card .ui-caption,
+.app-shell .app-card .ui-calendar-caption {
+  color: var(--color-text-body);
+  font-size: var(--font-size-caption);
+  line-height: 1.32;
+  font-weight: var(--font-weight-bold);
+}
+.app-shell .app-card .ui-calendar-caption {
+  color: var(--color-text-strong);
+  font-weight: var(--font-weight-black);
+}
+.app-shell .app-card .ui-amount {
+  color: var(--color-text-amount);
+  font-size: var(--font-size-amount);
+  line-height: 1.08;
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--letter-amount);
+}
+.app-shell .app-card .ui-amount-unit {
+  color: var(--color-text-amount);
+  font-size: var(--font-size-amount-unit);
+  line-height: 1;
+  font-style: normal;
+  font-weight: var(--font-weight-black);
+}
+
+/* Standard AppShell ratio: every non-signup page, including placeholders, must match the home shell frame. */
+.app-shell--standard {
+  padding: var(--safe-top) 16px calc(88px + var(--safe-bottom));
+}
+.app-shell--standard .app-header {
+  min-height: 64px;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 4px;
+}
+.app-shell--standard .header-logo {
+  width: 40px;
+  height: 40px;
+}
+.app-shell--standard .header-title {
+  font-size: 22px;
+}
+.app-shell--standard .header-notification {
+  width: 44px;
+  height: 44px;
+}
+.app-shell--standard .header-lucide {
+  width: 26px;
+  height: 26px;
+}
+.app-shell--standard .app-content {
+  padding-top: 10px;
+  padding-bottom: 16px;
+}
+.app-shell--standard .bottom-nav-panel {
+  padding: 4px 12px calc(6px + var(--safe-bottom));
+}
+.app-shell--standard .bottom-nav-link {
+  min-height: 58px;
+  gap: 2px;
+  font-size: 11.8px;
+}
+.app-shell--standard .bottom-nav-icon {
+  width: 30px;
+  height: 30px;
+}
+.app-shell--standard .bottom-nav-icon--logo,
+.app-shell--standard .bottom-nav-logo {
+  width: 34px;
+  height: 34px;
+}
+.app-shell--standard .nav-lucide {
+  width: 22px;
+  height: 22px;
+}
+.app-shell--standard .bottom-nav-divider {
+  margin-top: 2px;
+}
+.app-shell--standard .placeholder-page {
+  min-height: 100%;
 }

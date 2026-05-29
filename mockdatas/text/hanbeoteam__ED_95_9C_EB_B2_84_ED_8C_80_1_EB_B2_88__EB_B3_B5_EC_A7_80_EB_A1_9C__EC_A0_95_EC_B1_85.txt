@@ -1,0 +1,68 @@
+# Source: /workspaces/alpine/han-ip/mockdatas/_ED_95_9C_EB_B2_84_ED_8C_80_1_EB_B2_88__EB_B3_B5_EC_A7_80_EB_A1_9C__EC_A0_95_EC_B1_85.xml
+# Persona: hanbeoteam
+
+## Service 1
+servNm: 장애아가족양육지원
+servId: WLF00003262
+servDgst: 장애아동 가족의 일상적인 돌봄 부담을 경감하고 보호자의 사회활동을 돕기 위하여 돌봄 및 일시적 휴식지원 서비스를 제공합니다.
+jurMnofNm: 보건복지부
+jurOrgNm: 장애인서비스과
+sprtCycNm: 년
+srvPvsnNm: 프로그램/서비스(서비스)
+onapPsbltYn: Y
+rprsCtadr: 129
+servDtlLink: https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003262&wlfareInfoReldBztpCd=01
+svcfrstRegTs: 20210903
+lifeArray: 영유아,아동,청소년
+intrsThemaArray: 생활지원,보호·돌봄
+trgterIndvdlArray: 장애인
+inqNum: 71868
+
+## Service 2
+servNm: 가정양육수당 지원사업
+servId: WLF00003253
+servDgst: 가정에서 아이를 돌보는 가정 양육 시, 부모의 자녀 양육에 대한 부담을 줄이고 보육 서비스에 대한 선택권을 보장합니다.
+jurMnofNm: 교육부
+jurOrgNm: 영유아재정과
+sprtCycNm: 월
+srvPvsnNm: 현금지급
+onapPsbltYn: Y
+rprsCtadr: 02-6222-6060
+servDtlLink: https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003253&wlfareInfoReldBztpCd=01
+svcfrstRegTs: 20210903
+lifeArray: 영유아,아동
+intrsThemaArray: 보육
+inqNum: 1151727
+
+## Service 3
+servNm: 아이돌봄서비스
+servId: WLF00000024
+servDgst: 맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다.
+jurMnofNm: 성평등가족부
+jurOrgNm: 아이돌봄지원과
+sprtCycNm: 수시
+srvPvsnNm: 기타
+onapPsbltYn: Y
+rprsCtadr: 1577-8136
+servDtlLink: https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01
+svcfrstRegTs: 20210903
+lifeArray: 영유아,아동,청소년
+intrsThemaArray: 보육,보호·돌봄
+trgterIndvdlArray: 다문화·탈북민,다자녀,장애인,한부모·조손
+inqNum: 1012894
+
+## Service 4
+servNm: 유아학비 지원(3~5세 누리과정 지원)
+servId: WLF00000969
+servDgst: 국공사립유치원에 재원하는 유아를 대상으로 보호자의 소득수준에 관계없이 전 계층에 유아학비를 지원하여 실질적 교육기회 보장을 지원합니다.
+jurMnofNm: 교육부
+jurOrgNm: 영유아재정과
+sprtCycNm: 월
+srvPvsnNm: 전자바우처(바우처)
+onapPsbltYn: Y
+rprsCtadr: 1544-0079
+servDtlLink: https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000969&wlfareInfoReldBztpCd=01
+svcfrstRegTs: 20210903
+lifeArray: 영유아
+intrsThemaArray: 교육
+inqNum: 1828936

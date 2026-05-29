@@ -1,4 +1,19 @@
-export const variants = ['a', 'b', 'c'];
+export const personas = [
+  {
+    id: 'hanbeoteam',
+    name: '한버팀',
+    description: '34세, 워킹맘 / 연소득 약 2,600만 원, 중소기업 사무직',
+    summary: '경기 부천 거주, 한부모 가정 (자녀 1명)',
+  },
+  {
+    id: 'kimgatsaeng',
+    name: '김갓생',
+    description: '26세, 사회초년생 / 연소득 약 4,200만 원, 공기업 신입 사원',
+    summary: '서울 거주(자취/월세), 1인 가구',
+  },
+];
+
+export const personaStorageKey = 'hanip.selectedPersona';
 
 export const signupSteps = [
   {
@@ -54,8 +69,35 @@ export const signupSteps = [
   },
 ];
 
-export function isVariant(value) {
-  return variants.includes(value);
+export function isPersona(value) {
+  return personas.some((persona) => persona.id === value);
+}
+
+export function getPersona(value) {
+  return personas.find((persona) => persona.id === value) || personas[0];
+}
+
+export function getDefaultPersonaId() {
+  return personas[0].id;
+}
+
+export function getRememberedPersonaId() {
+  if (typeof window === 'undefined') return getDefaultPersonaId();
+  try {
+    const saved = window.localStorage.getItem(personaStorageKey);
+    return isPersona(saved) ? saved : getDefaultPersonaId();
+  } catch {
+    return getDefaultPersonaId();
+  }
+}
+
+export function rememberPersonaId(personaId) {
+  if (!isPersona(personaId) || typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(personaStorageKey, personaId);
+  } catch {
+    // Storage can be unavailable in private or embedded webviews. Routing still works.
+  }
 }
 
 export function getStepIndex(stepId) {
@@ -67,6 +109,10 @@ export function getStep(stepId) {
   return signupSteps[getStepIndex(stepId)];
 }
 
-export function stepPath(variant, stepId) {
-  return `/${variant}/signup/${stepId}`;
+export function stepPath(personaId, stepId) {
+  return `/${personaId}/signup/${stepId}`;
+}
+
+export function pagePath(personaId, page) {
+  return `/${personaId}/${page}`;
 }

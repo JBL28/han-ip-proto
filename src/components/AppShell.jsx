@@ -25,17 +25,17 @@ const icons = {
   my: <svg className="nav-lucide" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>,
 };
 
-export function AppShell({ variant, page, children, signup = false }) {
+export function AppShell({ personaId, page, children, signup = false }) {
   const active = aliases[page] || page;
 
   useLayoutEffect(() => {
-    document.body.dataset.theme = variant;
+    document.body.dataset.persona = personaId || "";
     const root = document.getElementById('root');
     if (root) {
-      root.className = `app-shell page-enter${signup ? ' app-shell--signup' : ` app-shell--${page}`}`;
-      root.dataset.theme = variant;
+      root.className = `app-shell page-enter${signup ? ' app-shell--signup' : ` app-shell--standard app-shell--${page}`}`;
+      root.dataset.persona = personaId || '';
     }
-  }, [variant, signup]);
+  }, [personaId, signup, page]);
 
   return (
     <>
@@ -45,7 +45,7 @@ export function AppShell({ variant, page, children, signup = false }) {
             <img className="header-logo" src={logo} alt="" />
             <span className="header-title">한입</span>
           </div>
-          <NavLink className="header-notification" to={`/${variant}/notifications`} aria-label="알림 페이지로 이동">
+          <NavLink className="header-notification" to={`/${personaId}/notifications`} aria-label="알림 페이지로 이동">
             <svg className="header-lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 21a2 2 0 0 0 3.4 0"/><path d="M18 8a6 6 0 0 0-12 0c0 7-3 8-3 8h18s-3-1-3-8"/></svg>
           </NavLink>
         </header>
@@ -59,7 +59,7 @@ export function AppShell({ variant, page, children, signup = false }) {
             <ul className="bottom-nav-list">
               {tabs.map((tab) => (
                 <li className="bottom-nav-item" key={tab.page}>
-                  <NavLink className={`bottom-nav-link${tab.logo ? ' bottom-nav-link--logo' : ''}`} to={`/${variant}/${tab.page}`} aria-current={active === tab.page ? 'page' : undefined}>
+                  <NavLink className={`bottom-nav-link${tab.logo ? ' bottom-nav-link--logo' : ''}`} to={`/${personaId}/${tab.page}`} aria-current={active === tab.page ? 'page' : undefined}>
                     <span className={`bottom-nav-icon${tab.logo ? ' bottom-nav-icon--logo' : ''}`}>{tab.logo ? <img className="bottom-nav-logo" src={logo} alt="" /> : icons[tab.page]}</span>
                     <span className="bottom-nav-label">{tab.label}</span>
                   </NavLink>

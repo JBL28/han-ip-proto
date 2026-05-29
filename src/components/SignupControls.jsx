@@ -40,6 +40,37 @@ export function YesNoRow({ label, value, onChange }) {
   );
 }
 
+export function SignupActionBar({ primary, secondary, single = false }) {
+  return (
+    <footer className={`signup-bottom-actions${single ? ' signup-bottom-actions--single' : ''}`}>
+      {!single && secondary && <ActionLink className="secondary-action" {...secondary} />}
+      <ActionLink className="primary-action" {...primary} />
+    </footer>
+  );
+}
+
+function ActionLink({ as: Component = 'a', className = '', children, ...props }) {
+  return <Component className={className} {...props}>{children}</Component>;
+}
+
+export function EqualButtonGroup({ label, options }) {
+  return (
+    <div className="auth-choice-row" role="group" aria-label={label}>
+      {options.map((option) => (
+        <button
+          className={`auth-choice${option.selected ? ' is-selected' : ''}`}
+          type="button"
+          aria-pressed={option.selected}
+          onClick={option.onClick}
+          key={option.value || option.label}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export function MinusIcon() { return <svg className="counter-lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /></svg>; }
 export function PlusIcon() { return <svg className="counter-lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14" /><path d="M5 12h14" /></svg>; }
 export function CheckIcon() { return <svg className="inline-lucide" viewBox="0 0 24 24" aria-hidden="true"><path d="m20 6-11 11-5-5" /></svg>; }

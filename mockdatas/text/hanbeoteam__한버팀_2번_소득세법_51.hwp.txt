@@ -1,0 +1,5 @@
+# Source: /workspaces/alpine/han-ip/mockdatas/한버팀_2번_소득세법_51.hwp.pdf
+# Persona: hanbeoteam
+# Extraction: fallback PDF string/stream extraction using Python stdlib; canonical UI content should prefer mockdatas/index.md unless readable text below is explicit.
+
+[no extractable plain text found by local fallback extractor]

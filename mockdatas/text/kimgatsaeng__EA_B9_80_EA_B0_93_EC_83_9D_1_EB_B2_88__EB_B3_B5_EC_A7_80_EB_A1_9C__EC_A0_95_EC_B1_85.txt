@@ -1,0 +1,16 @@
+# Source: /workspaces/alpine/han-ip/mockdatas/_EA_B9_80_EA_B0_93_EC_83_9D_1_EB_B2_88__EB_B3_B5_EC_A7_80_EB_A1_9C__EC_A0_95_EC_B1_85.xml
+# Persona: kimgatsaeng
+
+## Service 1
+servNm: 국민내일배움카드제 직업훈련지원(훈련비, 훈련장려금)
+servId: WLF00006229
+servDgst: 급격한 기술발전에 적응하고 노동시장 변화에 대응하는 사회안전망 차원에서 생애에 걸친 역량개발 향상 등을 위해 국민 스스로 직업능력개발훈련을 실시할 수 있도록 훈련비 등을 지원합니다.
+jurMnofNm: 고용노동부
+jurOrgNm: 인적자원개발과
+sprtCycNm: 수시
+srvPvsnNm: 전자바우처(바우처)
+onapPsbltYn: N
+rprsCtadr: 1350
+servDtlLink: https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00006229&wlfareInfoReldBztpCd=01
+svcfrstRegTs: 20260316
+inqNum: 1218
